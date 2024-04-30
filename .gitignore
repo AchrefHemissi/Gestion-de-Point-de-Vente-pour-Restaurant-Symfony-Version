@@ -7,6 +7,8 @@
 /public/bundles/
 /var/
 /vendor/
+
+
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###
@@ -23,3 +25,14 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+/.env
+/.env.test
+.idea
+compose.override.yaml
+compose.yaml
+composer.json
+composer.lock
+importmap.php
+phpunit.xml.dist
+symfony.lock
