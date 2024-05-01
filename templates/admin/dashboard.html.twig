@@ -1,0 +1,125 @@
+<?php
+include 'session_check.php';
+require_once 'connexionAdminDB.php';
+?>
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>{{page_title}}</title>
+    <link rel="stylesheet" href="{{ asset('admin.css') }}">
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="{{ asset('logo.png') }}" class="icone" />
+</head>
+
+<body>
+<div class="sidebar">
+    <div class="logo-details"></div>
+    <ul class="nav-links">
+        <li>
+            <a href="#" onclick="showDashboard()">
+                <i class="bx bx-grid-alt"></i>
+                <span class="links_name">Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" onclick="showCustomers()">
+                <i class="bx bx-box"></i>
+                <span class="links_name">Customers</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" onclick="showOrders()">
+                <i class="bx bx-list-check"></i>
+                <span class="links_name">Orders</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" onclick="showMessages()">
+                <i class="bx bx-message"></i>
+                <span class="links_name">Messages</span>
+            </a>
+        </li>
+        <li class="log_out" id="logOutButton">
+            <a href="{{ path('login_route') }}">
+                <i class="bx bx-log-out"></i>
+                <span class="links_name">Log out</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class="bx bx-menu sidebarBtn"></i>
+            <span class="dashboard">Dashboard</span>
+        </div>
+        <div class="profile-details">
+            <img src="{{ asset('logo.png') }}" alt="" />
+            <span class="admin_name">Admin</span>
+        </div>
+    </nav>
+    <div class="home-content">
+        <div class="sales-boxes" id="salesBoxes">
+
+            <div class="top-sales box moving">
+                <div class="title"><b>Top Selling Products</b></div>
+                <ul class="top-sales-details" id="product-list">
+                </ul>
+
+            </div>
+            <div class="totalCustomers moving">
+                <div style="text-align:center;font-size:22px"><b>Total Customers</b></div>
+                <div class="sales-details">
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="chartcontainer center moving">
+            <div class="chart">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="customers-list moving" id="customersList" style="display: none">
+
+    </div>
+    <div class="orders-list moving" id="ordersList" style="display: none">
+
+    </div>
+
+    </div>
+    <div class="email-form" style=display:none id="emailForm">
+        <form action="sendEmail.php" method="post">
+            <label for="recipient">Recipient:</label><br>
+            <input type="email" id="recipient" name="recipient" required><br>
+            <label for="subject">Subject:</label><br>
+            <input type="text" id="subject" name="subject" required><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" required></textarea><br>
+            <input type="submit" value="Send Email">
+        </form>
+    </div>
+
+
+
+</section>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<script src="{{ asset('admin.js') }}"></script>
+
+
+
+
+
+
+</body>
+
+</html>
