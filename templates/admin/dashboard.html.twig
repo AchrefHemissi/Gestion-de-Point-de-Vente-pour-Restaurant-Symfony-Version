@@ -11,7 +11,7 @@ require_once 'connexionAdminDB.php';
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <title>{{page_title}}</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="{{ asset('admin.css') }}">
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -47,7 +47,7 @@ require_once 'connexionAdminDB.php';
             </a>
         </li>
         <li class="log_out" id="logOutButton">
-            <a href="{{ path('login_route') }}">
+            <a href="{{ path('login_page') }}">
                 <i class="bx bx-log-out"></i>
                 <span class="links_name">Log out</span>
             </a>
@@ -98,15 +98,13 @@ require_once 'connexionAdminDB.php';
 
     </div>
     <div class="email-form" style=display:none id="emailForm">
-        <form action="sendEmail.php" method="post">
-            <label for="recipient">Recipient:</label><br>
-            <input type="email" id="recipient" name="recipient" required><br>
-            <label for="subject">Subject:</label><br>
-            <input type="text" id="subject" name="subject" required><br>
-            <label for="message">Message:</label><br>
-            <textarea id="message" name="message" required></textarea><br>
-            <input type="submit" value="Send Email">
-        </form>
+        <h1>Send Email</h1>
+        {{ form_start(eform) }}
+        {{ form_row(eform.recipient) }}
+        {{ form_row(eform.subject) }}
+        {{ form_row(eform.message) }}
+        {{ form_row(eform.send) }}
+        {{ form_end(eform) }}
     </div>
 
 
