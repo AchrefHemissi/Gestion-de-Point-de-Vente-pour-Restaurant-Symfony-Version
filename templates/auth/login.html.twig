@@ -21,7 +21,11 @@
         <form method="POST">
             <h1>Create Account</h1>
             {{ form_start(rform) }}
-            {{ form_widget(rform) }}
+            {{ form_widget(rform.fname) }}
+            {{ form_widget(rform.lname) }}
+            {{ form_widget(rform.email) }}
+            {{ form_widget(rform.phone) }}
+            {{ form_widget(rform.password) }}
             <button type="submit" name="register">Create Account</button>
             {{ form_end(rform) }}
             <div class="message"><?php echo $message; ?>

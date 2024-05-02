@@ -19,18 +19,23 @@ public function buildForm(FormBuilderInterface $builder, array $options): void
 $builder
 ->add('fname', TextType::class, [
 'label' => 'First Name',
+    'attr' => ['placeholder' => 'First Name'],
 ])
 ->add('lname', TextType::class, [
 'label' => 'Last Name',
+    'attr' => ['placeholder' => 'Last Name'],
 ])
 ->add('email', EmailType::class, [
 'label' => 'Email',
+    'attr' => ['placeholder' => 'Email'],
 ])
 ->add('phone', TelType::class, [
 'label' => 'Phone Number',
+    'attr' => ['placeholder' => 'Phone Number'],
 ])
 ->add('password', PasswordType::class, [
 'label' => 'Password',
+    'attr' => ['placeholder' => 'Password'],
 ]);
 }
 
