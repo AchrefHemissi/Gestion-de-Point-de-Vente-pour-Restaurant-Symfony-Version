@@ -1,15 +1,23 @@
 <?php
 
 namespace App\Controller;
+
 use App\Form\AdminMailType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
 {
+    private MailerInterface $mailer;
 
+    public function __construct(MailerInterface $mailer)
+    {
+        $this->mailer = $mailer;
+    }
 
     #[Route('/admin/dashboard', name: 'send_email')]
     public function sendEmail(Request $request): Response
@@ -23,24 +31,20 @@ class AdminController extends AbstractController
             $recipient = $formData['recipient'];
             $subject = $formData['subject'];
             $message = $formData['message'];
-            $email = (new \Symfony\Component\Mime\Email())
+            $email = (new Email())
                 ->from('your@example.com')
                 ->to($recipient)
                 ->subject($subject)
                 ->text($message);
 
-            $mailer = $this->get('mailer');
-            $mailer->send($email);
+            $this->mailer->send($email);
 
             // Redirect or display success message
             $this->addFlash('success', 'Email sent successfully.');
-
         }
 
         return $this->render('admin/dashboard.html.twig', [
             'eform' => $form->createView(),
         ]);
-
-
     }
 }

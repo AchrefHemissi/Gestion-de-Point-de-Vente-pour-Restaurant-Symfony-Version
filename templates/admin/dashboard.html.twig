@@ -1,7 +1,3 @@
-<?php
-include 'session_check.php';
-require_once 'connexionAdminDB.php';
-?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -96,7 +92,6 @@ require_once 'connexionAdminDB.php';
 
     </div>
 
-    </div>
     <div class="email-form" style=display:none id="emailForm">
         <h1>Send Email</h1>
         {{ form_start(eform) }}
@@ -171,9 +166,111 @@ require_once 'connexionAdminDB.php';
                     });
                 }
             })
-    };
+    }
     updateChart();
     setInterval(updateChart, 2000);
+</script>
+<script>
+    async function fetchOrders() {
+        const response = await fetch('/fetch-orders'); // Fetch data from the 'fetch-orders' route
+        const orders = await response.json();
+
+        // Clear the current orders
+        document.querySelector('.orders-list').innerHTML = '';
+
+        // Loop over the orders and display them
+        for (let orderId in orders) {
+            let firstOrderItem = orders[orderId][0];
+            let customerName = firstOrderItem.fname + ' ' + firstOrderItem.lname;
+            let cdate = firstOrderItem.cdate;
+            let num = firstOrderItem.unum_tel;
+            let lieu = firstOrderItem.clieu;
+
+            let orderHTML = `
+                <div class="order" style="display:block" data-id="${orderId}">
+                    <div class="order-info">
+                        <span class="info-label">Order ID:&nbsp;&nbsp;&nbsp;</span>
+                        <span class="info-value">${orderId}&nbsp;&nbsp;&nbsp;</span><br>
+                        <span class="info-label">Customer :&nbsp;&nbsp;&nbsp;</span>
+                        <span class="info-value">${customerName}&nbsp;&nbsp;&nbsp;</span><br>
+                        <span class="info-label">Customer number :&nbsp;&nbsp;&nbsp;</span>
+                        <span class="info-value">${num}&nbsp;&nbsp;&nbsp;</span><br>
+                        <span class="info-label">location :&nbsp;&nbsp;&nbsp;</span>
+                        <span class="info-value">${lieu}&nbsp;&nbsp;&nbsp;</span><br>
+                        <span class="info-label">Date :&nbsp;&nbsp;&nbsp;</span>
+                        <span class="info-value">${cdate}&nbsp;&nbsp;&nbsp;</span><br>
+                    </div>
+            `;
+
+            orders[orderId].forEach(orderItem => {
+                let productName = orderItem.prod;
+                let quantity = orderItem.quan;
+                orderHTML += `
+                    <div class="order-item">
+                        <span class="info-label">Product :&nbsp;&nbsp;&nbsp;</span>
+                        <span class="info-value">${productName}&nbsp;&nbsp;&nbsp;</span>
+                        <span class="info-label">Quantity :&nbsp;&nbsp;&nbsp;</span>
+                        <span class="info-value">${quantity}&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                `;
+            });
+
+            orderHTML += `<button class="done-button">Pending</button></div>`;
+            document.querySelector('.orders-list').insertAdjacentHTML('beforeend', orderHTML);
+        }
+        document.querySelectorAll('.done-button').forEach(button => {
+            button.addEventListener('click', function() {
+                var orderDiv = this.parentElement;
+                var orderId = orderDiv.getAttribute('data-id');
+
+                var formData = new FormData();
+                formData.append('id', orderId);
+
+                fetch('/update-order', { // Fetch data from the 'update-order' route
+                    method: 'POST',
+                    body: formData
+                });
+
+                orderDiv.style.display = 'none';
+            });
+        });
+
+    }
+
+    // Fetch orders every 5 seconds
+    fetchOrders();
+    setInterval(fetchOrders, 5000);
+</script>
+<script>
+    async function calcCustomers() {
+        const response = await fetch('/count-users'); // Fetch data from the 'count-users' route
+        const data = await response.text();
+        console.log(data);
+        document.querySelector('.sales-details').innerHTML = `<p style="font-size: 40px;">${data}</p>`;
+    }
+
+    // Fetch orders every 5 seconds
+    calcCustomers();
+    setInterval(calcCustomers, 5000);
+</script>
+<script>
+    function fetchProducts() {
+        fetch('/top-selling') // Fetch data from the 'top-selling' route
+            .then(response => response.json())
+            .then(data => {
+                const productList = document.getElementById('product-list');
+                productList.innerHTML = '';
+                data.forEach(product => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<b>${product.name} </b>${product.vendu} unit`;
+                    productList.appendChild(listItem);
+                });
+            });
+    }
+
+    // Fetch products every 5 seconds
+    fetchProducts();
+    setInterval(fetchProducts, 5000);
 </script>
 
 
