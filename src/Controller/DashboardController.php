@@ -26,7 +26,7 @@ class DashboardController extends AbstractController
         $session->set('user', 'Dhia9030');
 
         // Render the 'dashboard.twig' template
-        return $this->render('dashboard.html.twig', [
+        return $this->render('admin/dashboard.html.twig', [
             'user' => $session->get('user'),
         ]);
     }
