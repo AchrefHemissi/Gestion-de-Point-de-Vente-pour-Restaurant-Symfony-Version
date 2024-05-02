@@ -37,27 +37,33 @@ function showMessages() {
 }
 
 // Select all ban buttons
+// Select all ban buttons
 document.querySelectorAll(".ban-button").forEach((button) => {
     button.addEventListener("click", function () {
         var userId = this.getAttribute("data-id"); // Ensure that userId is being correctly retrieved
 
-        var formData = new FormData();
-        formData.append("id", userId);
+        // Optimistically update the button's color and text content
+        var isBanned = button.textContent === "Ban User";
+        button.textContent = isBanned ? "Unban User" : "Ban User";
+        button.style.backgroundColor = isBanned ? "green" : "";
 
-        fetch("ban.php", {
+        fetch(`/toggle-user/${userId}`, {
             method: "POST",
-            body: formData,
         })
-            .then((response) => response.text())
+            .then((response) => response.json())
             .then((data) => {
-                // Toggle the button color based on the new status
-                if (data == 1) {
-                    button.style.backgroundColor = "green";
-                    button.textContent = "Unban User";
-                } else {
-                    button.style.backgroundColor = "";
-                    button.textContent = "Ban User";
+                // If the fetch request failed, revert the button's color and text content
+                if (data.status == 1 && !isBanned || data.status == 0 && isBanned) {
+                    button.style.backgroundColor = isBanned ? "" : "green";
+                    button.textContent = isBanned ? "Ban User" : "Unban User";
                 }
+            })
+            .catch((error) => {
+                // If the fetch request failed, revert the button's color and text content and show an error message
+                console.error('Error:', error);
+                button.style.backgroundColor = isBanned ? "" : "green";
+                button.textContent = isBanned ? "Ban User" : "Unban User";
+                alert('An error occurred while trying to toggle the user\'s ban status.');
             });
     });
 });

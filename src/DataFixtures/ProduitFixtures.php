@@ -13,7 +13,7 @@ public function load(ObjectManager $manager)
 {
 $faker = Factory::create();
 
-for ($i = 0; $i < 20; $i++) {
+for ($i = 0; $i < 8; $i++) {
 $produit = new Produit();
 $produit->setName($faker->word);
 $produit->setPrix($faker->randomNumber(2));
@@ -21,8 +21,9 @@ $produit->setVendu($faker->randomNumber(2));
 $produit->set_is_Drink($faker->boolean);
 
 $manager->persist($produit);
+    $manager->flush();
 }
 
-$manager->flush();
+
 }
 }

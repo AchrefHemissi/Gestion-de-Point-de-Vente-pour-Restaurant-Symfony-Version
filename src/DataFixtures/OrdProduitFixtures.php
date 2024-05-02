@@ -30,8 +30,9 @@ $ordProduit->setIdProduit($faker->randomElement($manager->getRepository(Produit:
 $ordProduit->setQuantity($faker->randomNumber(2));
 
 $manager->persist($ordProduit);
+    $manager->flush();
 }
 
-$manager->flush();
+
 }
 }

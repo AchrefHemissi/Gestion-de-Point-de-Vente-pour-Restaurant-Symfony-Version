@@ -20,8 +20,9 @@ $carteBancaire->setMontant($faker->randomNumber(3));
 $carteBancaire->setCode($faker->randomNumber(3));
 
 $manager->persist($carteBancaire);
+    $manager->flush();
 }
 
-$manager->flush();
+
 }
 }

@@ -30,8 +30,9 @@ $commande->setLieu($faker->city);
 $commande->setEtatCommande($faker->boolean);
 
 $manager->persist($commande);
+    $manager->flush();
 }
 
-$manager->flush();
+
 }
 }

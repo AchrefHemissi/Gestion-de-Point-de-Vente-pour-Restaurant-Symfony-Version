@@ -11,7 +11,7 @@ class UtilisateurFixtures extends Fixture
 {
     public static function getGroups(): array
     {
-        return ['utilisateur'];
+        return ['group1'];
     }
 public function load(ObjectManager $manager)
 {
@@ -28,8 +28,8 @@ $utilisateur->set_is_Admin($faker->boolean);
 $utilisateur->setNumTel($faker->randomNumber(8));
 
 $manager->persist($utilisateur);
+    $manager->flush();
 }
 
-$manager->flush();
 }
 }

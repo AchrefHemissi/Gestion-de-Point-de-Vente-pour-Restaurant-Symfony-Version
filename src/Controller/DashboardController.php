@@ -2,6 +2,7 @@
 // src/Controller/DashboardController.php
 namespace App\Controller;
 
+use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,16 +21,41 @@ class DashboardController extends AbstractController
     }
 
     #[Route('/dashboard', name: 'dashboard')]
-    public function dashboard(SessionInterface $session): Response
+    public function dashboard(UtilisateurRepository $userRepository,SessionInterface $session): Response
     {
         // Start a session and set some data
-        $session->set('user', 'Dhia9030');
+        $session->set('me', 'Dhia9030');
+        $users = $userRepository->findAll();
+
 
         // Render the 'dashboard.twig' template
         return $this->render('admin/dashboard.html.twig', [
-            'user' => $session->get('user'),
+            'me' => $session->get('me'),
+            'users' => $users,
         ]);
+
+
     }
+    #[Route('/toggle-user/{id}', name: 'toggle_user', methods: ['POST'])]
+    public function toggleUser($id, UtilisateurRepository $userRepository, EntityManagerInterface $em): JsonResponse
+    {
+        $user = $userRepository->find($id);
+
+        if (!$user) {
+            throw $this->createNotFoundException('The user does not exist');
+        }
+
+        // Toggle the user's status
+        $user->set_is_Banned($user->get_is_Banned() == 0 ? 1 : 0);
+
+        // Save the changes to the database
+        $em->persist($user);
+        $em->flush();
+
+        // Return the new status as a response
+        return new JsonResponse(['status' => $user->get_is_Banned()]);
+    }
+
 
     #[Route('/fetch-chart', name: 'fetch_chart')]
     public function fetchChart(): JsonResponse
@@ -52,12 +78,12 @@ class DashboardController extends AbstractController
     {
         $qb = $this->em->createQueryBuilder();
 
-        $qb->select('c.id as cid', 'c.date_commande as cdate', 'c.lieu as clieu', 'u.nom as lname', 'u.prenom as fname', 'u.num_tel as unum_tel', 'p.name as prod', 'o.quantite as quan')
+        $qb->select('c.id as cid', 'c.date_commande as cdate', 'c.lieu as clieu', 'u.nom as lname', 'u.prenom as fname', 'u.num_tel as unum_tel', 'p.name as prod', 'o.quantity as quan')
             ->from('App\Entity\Commande', 'c')
             ->join('App\Entity\Utilisateur', 'u', 'WITH', 'u.id = c.id_client')
             ->join('App\Entity\Ordproduit', 'o', 'WITH', 'o.id_commande = c.id')
             ->join('App\Entity\Produit', 'p', 'WITH', 'p.id = o.id_produit')
-            ->where('c.etat = 0')
+            ->where('c.etat_commande = 0')
             ->orderBy('c.id', 'ASC');
 
         $query = $qb->getQuery();
@@ -70,6 +96,28 @@ class DashboardController extends AbstractController
 
         return new JsonResponse($groupedOrders);
     }
+
+    #[Route('/update-orders/{id}', name: 'update_orders')]
+    public function updateOrders($id): JsonResponse
+    {
+        // Fetch the 'Commande' entity with the given id
+        $commande = $this->em->getRepository('App\Entity\Commande')->find($id);
+
+        if (!$commande) {
+            throw $this->createNotFoundException('No commande found for id '.$id);
+        }
+
+        // Update 'etat_commande' to 1
+        $commande->setEtatCommande(1);
+
+        $this->em->persist($commande);
+
+        $this->em->flush();
+
+        return new JsonResponse(['status' => 'success']);
+    }
+
+
     #[Route('/count-users', name: 'count_users')]
     public function countUsers(): Response
     {

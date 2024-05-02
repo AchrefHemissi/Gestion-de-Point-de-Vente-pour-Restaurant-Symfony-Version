@@ -85,8 +85,22 @@
             </div>
         </div>
     </div>
-    <div class="customers-list moving" id="customersList" style="display: none">
-
+    <div class="customers-list moving" id="customersList"  style="display: none">
+        {% for user in users %}
+            <div class="customer">
+                <div class="customer-info">
+                    <span class="info-label">First Name:</span>
+                    <span class="info-value"> {{ user.prenom }} </span>
+                    <span class="info-label">Last Name:</span>
+                    <span class="info-value"> {{ user.nom }} </span>
+                </div>
+                {% if user.get_is_Banned == 1 %}
+                    <button class="ban-button" style="background-color:green" data-id="{{ user.id }}">Unban User</button>
+                {% else %}
+                    <button class="ban-button" data-id="{{ user.id }}">Ban User</button>
+                {% endif %}
+            </div>
+        {% endfor %}
     </div>
     <div class="orders-list moving" id="ordersList" style="display: none">
 
@@ -225,12 +239,9 @@
                 var orderDiv = this.parentElement;
                 var orderId = orderDiv.getAttribute('data-id');
 
-                var formData = new FormData();
-                formData.append('id', orderId);
 
-                fetch('/update-order', { // Fetch data from the 'update-order' route
+                fetch(`/update-orders/${orderId}`, { // Fetch data from the 'update-order' route
                     method: 'POST',
-                    body: formData
                 });
 
                 orderDiv.style.display = 'none';
