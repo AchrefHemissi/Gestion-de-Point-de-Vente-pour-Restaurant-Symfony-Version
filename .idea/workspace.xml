@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c00145e6-41e2-445b-b71e-69c55a2f8e6c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CountUsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CountUsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FetchChartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FetchChartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FetchOrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FetchOrdersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TopSellingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TopSellingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UpdateOrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UpdateOrdersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UtilisateurRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UtilisateurRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,6 +157,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
+      <path value="$PROJECT_DIR$/vendor/symfony/google-mailer" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -173,6 +171,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
@@ -185,6 +184,12 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mega-PC\Desktop\symfony_project\Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version" />
+      <recent name="C:\Users\Mega-PC\Desktop\symfony_project\Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version\public" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml.dist" scope="XML" use_alternative_configuration_file="true" />
@@ -209,6 +214,12 @@
       <updated>1714692283266</updated>
       <workItem from="1714692284311" duration="2733000" />
       <workItem from="1714696248406" duration="3723000" />
+      <workItem from="1714761929134" duration="3000" />
+      <workItem from="1714762441364" duration="68000" />
+      <workItem from="1714764541456" duration="108000" />
+      <workItem from="1714767433805" duration="4558000" />
+      <workItem from="1714772341729" duration="583000" />
+      <workItem from="1714772940748" duration="965000" />
     </task>
     <servers />
   </component>

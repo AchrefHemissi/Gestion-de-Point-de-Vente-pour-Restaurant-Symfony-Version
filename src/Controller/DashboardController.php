@@ -47,8 +47,7 @@ class DashboardController extends AbstractController
             $form = $this->createForm(AdminMailType::class);
 
         }
-        $this->addFlash('failed', "Email wasn't send");
+        $this->addFlash('danger', "Email wasn't send");
         return $form->createView();
     }
-
 }
