@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>home</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{{ asset('client/css/style.css') }}" />
+    <link rel="shortcut icon" type="x-icon" href="{{ asset('images/logo.png') }}" />
+</head>
+
+<body>
+<header class="header">
+    <section class="flex">
+        <a href="{{ path('home') }}" class="logo"> <b>GL-icious </b> 😋</a>
+
+        <nav class="navbar">
+            <a href="{{ path('home') }}">home</a>
+            <a href="{{ path('about') }}">about</a>
+            <a href="{{ path('menu') }}">menu</a>
+            <a href="{{ path('orders') }}">orders</a>
+            <a href="{{ path('contact') }}">contact</a>
+
+        </nav>
+
+        <div class="icons">
+            <a href="{{ path('search') }}"><i class="fas fa-search"></i></a>
+            <a href="{{ path('cart') }}"><i class="fas fa-shopping-cart"></i><span>{{ cart_items|default(0) }}</span></a> {# Replace cart_items with your session variable #}
+            <div id="user-btn" class="fas fa-user"></div>
+            <div id="menu-btn" class="fas fa-bars"></div>
+        </div>
+
+        <div class="profile">
+            <p class="name">Me</p> {# Replace me with your user variable from session when you finally know how to make the sseion #}
+            <div class="flex">
+                <a href="{{ path('profile') }}" class="btn">profile</a>
+                <a href="{{ path('logout') }}" class="delete-btn">logout</a>
+            </div>
+
+        </div>
+    </section>
+</header>
