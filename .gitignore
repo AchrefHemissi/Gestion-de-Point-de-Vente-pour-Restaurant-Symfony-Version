@@ -7,3 +7,4 @@
 /.env.*.local.php
 /.env
 
+/public/node_modules
