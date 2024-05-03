@@ -106,17 +106,17 @@
 
     </div>
 
-{#
+
     <div class="email-form" style=display:none id="emailForm">
         <h1>Send Email</h1>
-        {{ form_start(eform) }}
-        {{ form_row(eform.recipient) }}
-        {{ form_row(eform.subject) }}
-        {{ form_row(eform.message) }}
-        {{ form_row(eform.send) }}
-        {{ form_end(eform) }}
+        {{ form_start(form) }}
+        {{ form_row(form.recipient) }}
+        {{ form_row(form.subject) }}
+        {{ form_row(form.message) }}
+        {{ form_row(form.send) }}
+        {{ form_end(form) }}
     </div>
-    #}
+
 
 
 
