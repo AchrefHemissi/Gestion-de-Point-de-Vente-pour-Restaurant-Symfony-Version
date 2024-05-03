@@ -22,7 +22,7 @@ class SendMailFromAdminService
         $message = $formData['message'];
 
         $email = (new Email())
-                ->from('gl.icious.symfonyteam@dmail.com')
+                ->from('gl.icious.symfonyteam@gmail.com')
                 ->to($recipient)
                 ->subject($subject)
                 ->text($message);

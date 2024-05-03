@@ -55,6 +55,7 @@
         <div class="sidebar-button">
             <i class="bx bx-menu sidebarBtn"></i>
             <span class="dashboard">Dashboard</span>
+
         </div>
         <div class="profile-details">
             <img src="{{ asset('logo.png') }}" alt="" />
@@ -62,7 +63,14 @@
         </div>
     </nav>
     <div class="home-content">
+
         <div class="sales-boxes" id="salesBoxes">
+            {% for message in app.flashes('success') %}
+                {{ message }}
+            {% endfor %}
+            {% for message in app.flashes('failed') %}
+                {{ message }}
+            {% endfor %}
 
             <div class="top-sales box moving">
                 <div class="title"><b>Top Selling Products</b></div>
