@@ -52,11 +52,8 @@ document.querySelectorAll(".ban-button").forEach((button) => {
         })
             .then((response) => response.json())
             .then((data) => {
-                // If the fetch request failed, revert the button's color and text content
-                if (data.status == 1 && !isBanned || data.status == 0 && isBanned) {
-                    button.style.backgroundColor = isBanned ? "" : "green";
-                    button.textContent = isBanned ? "Ban User" : "Unban User";
-                }
+                console.log(data);
+
             })
             .catch((error) => {
                 // If the fetch request failed, revert the button's color and text content and show an error message
