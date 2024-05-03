@@ -2,30 +2,22 @@
 
 namespace App\Controller;
 
-use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Utilisateur;
+
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Doctrine\Persistence\ManagerRegistry;
 
 class CountUsersController extends AbstractController
 {
-    private EntityManagerInterface $em;
-
-    public function __construct(EntityManagerInterface $em)
-    {
-        $this->em = $em;
-    }
 
     #[Route('/count-users', name: 'count_users')]
-    public function countUsers(): Response
+    public function countUsers(ManagerRegistry $doctrine): Response
     {
-        $query = $this->em->createQueryBuilder()
-            ->select('count(u.id)')
-            ->from('App\Entity\Utilisateur', 'u')
-            ->where('u.is_admin = 0')
-            ->getQuery();
-
-        $total = $query->getSingleScalarResult();
+        $repository = $doctrine->getRepository(Utilisateur::class);
+        $total = $repository->countUsers();
 
         return new Response($total);
     }

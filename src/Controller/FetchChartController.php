@@ -3,32 +3,27 @@
 namespace App\Controller;
 
 use App\Entity\Produit;
-use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class FetchChartController extends AbstractController
 {
-    private EntityManagerInterface $em;
 
-    public function __construct(EntityManagerInterface $em)
-    {
-        $this->em = $em;
-    }
     #[Route('/fetch-chart', name: 'fetch_chart')]
-    public function fetchChart(): JsonResponse
+    public function fetchChart(ManagerRegistry $doctrine): JsonResponse
     {
-        $repository = $this->em->getRepository(Produit::class);
 
-        // Fetch all 'Produit' entities
-        $produits = $repository->findAll();
+        $repository = $doctrine->getRepository(Produit::class);
 
-        // Extract the 'vendu' field from each 'Produit'
-        $data = array_map(function($produit) {
-            return $produit->getVendu();
-        }, $produits);
+        // Fetch all 'products' entities
+        $products = $repository->findAll();
+
+        // Extract the 'vendu' field from each 'product'
+        $data = array_map(function($products) {
+            return $products->getVendu();
+        }, $products);
 
         return new JsonResponse($data);
     }
