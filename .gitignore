@@ -8,3 +8,4 @@
 /.env
 
 /public/node_modules
+.idea/
