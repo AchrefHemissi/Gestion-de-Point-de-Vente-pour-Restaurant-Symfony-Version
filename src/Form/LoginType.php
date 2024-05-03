@@ -8,20 +8,28 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class LoginType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('login_email', EmailType::class, [
+            ->add('email', EmailType::class, [
                 'label' => 'Email',
                 'attr' => ['placeholder' => 'Email'],
+
             ])
-            ->add('login_password', PasswordType::class, [
+            ->add('pass', PasswordType::class, [
                 'label' => 'Password',
                 'attr' => ['placeholder' => 'Password'],
+
+            ])
+
+            ->add('submit', SubmitType::class, [
+                'attr' => ['class' => 'btn'],
             ]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void
