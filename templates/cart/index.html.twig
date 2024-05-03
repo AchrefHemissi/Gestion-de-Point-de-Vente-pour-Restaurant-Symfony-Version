@@ -1,20 +1,7 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello CartController!{% endblock %}
-
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/medini/OneDrive/Desktop/Achref/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version/src/Controller/CartController.php</code></li>
-        <li>Your template at <code>C:/Users/medini/OneDrive/Desktop/Achref/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version/templates/cart/index.html.twig</code></li>
-    </ul>
+{% include 'fragments/navBar.html.twig' %}
+<div class="heading">
+    <h3>shopping cart</h3>
+    <p><a href="home.php">home </a> <span> / cart</span></p>
 </div>
-{% endblock %}
+
+{% include 'fragments/loader.html.twig' %}
