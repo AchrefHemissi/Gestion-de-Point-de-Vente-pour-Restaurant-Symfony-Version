@@ -1,0 +1,17 @@
+        <form action="cart.php" accept="" method="post" class="box">
+
+            <button class="fas fa-shopping-cart" type="submit" name="add_to_cart"></button>
+            <img src="{{ asset('client/images/fries.jpg')}}" alt="" />
+            <a href="fast_food.php" class="cat">fast food</a>
+            <div class="name">Fries</div>
+            <div class="flex">
+                <div class="price"><span>$</span>7 </div>
+                <input hidden name="id" value="7">
+                <input hidden name="name" value="Fries">
+                <input hidden name="price" value="7" class="unit-price">
+                <input hidden name="imglink" value="{{ asset('client/images/fries.jpg')}}">
+                <input type="number" name="qty" class="qty" min="1" max="99" value="1" onkeypress="if(this.value.length == 2) return false;" />
+
+            </div>
+            <div class="sub-total">total : $ <span>7</span></div>
+        </form>
