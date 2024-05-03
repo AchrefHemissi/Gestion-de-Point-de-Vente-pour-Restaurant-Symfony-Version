@@ -16,16 +16,29 @@
         Welcome to <span style="color: brown">GL-icious</span>
     </h1>
 </div>
+<!-- Display Danger (Error) Flash Messages -->
+{% for flashMessage in app.flashes('danger') %}
+    <div class="alert alert-danger">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+<!-- Display Success Flash Messages -->
+{% for flashMessage in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
 <div class="container" id="container">
     <div class="form-container sign-up">
         <form method="POST">
             <h1>Create Account</h1>
             {{ form_start(rform) }}
-            {{ form_widget(rform.fname) }}
-            {{ form_widget(rform.lname) }}
+            {{ form_widget(rform.prenom) }}
+            {{ form_widget(rform.nom) }}
             {{ form_widget(rform.email) }}
-            {{ form_widget(rform.phone) }}
-            {{ form_widget(rform.password) }}
+            {{ form_widget(rform.num_tel) }}
+            {{ form_widget(rform.pass) }}
             <button type="submit" name="register">Create Account</button>
             {{ form_end(rform) }}
             <div class="message"><?php echo $message; ?>
@@ -36,9 +49,9 @@
         <form method="POST">
             <h1>Sign In</h1>
             {{ form_start(form) }}
-            {{ form_widget(form.login_email) }}
-            {{ form_widget(form.login_password) }}
-            <button type="submit" name="login">Sign In</button>
+            {{ form_widget(form.email) }}
+            {{ form_widget(form.pass) }}
+            {{ form_widget(form.submit) }}
             {{ form_end(form) }}
             <div class="message"><?php echo $message; ?>
             </div>
