@@ -5,8 +5,70 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c00145e6-41e2-445b-b71e-69c55a2f8e6c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/client/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/css/style1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/css/style2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/FriedChicken.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/about-img.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/cat-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/cat-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/cat-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/cat-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/chawarma.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/cheesecake.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/clock-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/contact-img.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/email-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/fried.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/fries.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/home-img-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/home-img-1q.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/home-img-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/home-img-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/load.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/loader.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/map-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/mojito.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/phone-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/pic-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/pic-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/pic-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/pic-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/pic-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/pic-6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/spaghetti.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/step-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/step-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/step-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/images/user-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/js/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/js/total_price.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/burger-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/burger-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/dessert-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/dessert-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/dessert-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/dessert-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/dessert-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/dessert-6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/dish-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/dish-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/dish-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/dish-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/drink-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/drink-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/drink-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/drink-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/drink-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/pizza-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/pizza-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/pizza-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/pizza-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/client/uploaded_img/pizza-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/client/home.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +232,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mega-PC/Desktop/symfony_project/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/medini/OneDrive/Desktop/Achref/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version/public/client&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -179,6 +241,18 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\medini\OneDrive\Desktop\Achref\Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version\public\client" />
+      <recent name="C:\Users\medini\OneDrive\Desktop\Achref\Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version\public\client\js" />
+      <recent name="C:\Users\medini\OneDrive\Desktop\Achref\Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version\public\client\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\medini\OneDrive\Desktop\Achref\Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version\public\client" />
+      <recent name="C:\Users\medini\OneDrive\Desktop\Achref\Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version\public" />
+      <recent name="C:\Users\medini\OneDrive\Desktop\Achref\Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version\public\client\css" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml.dist" scope="XML" use_alternative_configuration_file="true" />
@@ -188,8 +262,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PS-241.14494.237" />
-        <option value="bundled-php-predefined-ba97393d7c68-8f0632a2a215-com.jetbrains.php.sharedIndexes-PS-241.14494.237" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-PS-241.15989.102" />
+        <option value="bundled-php-predefined-ba97393d7c68-c76157a7178b-com.jetbrains.php.sharedIndexes-PS-241.15989.102" />
       </set>
     </attachedChunks>
   </component>
@@ -203,6 +277,7 @@
       <updated>1714692283266</updated>
       <workItem from="1714692284311" duration="2733000" />
       <workItem from="1714696248406" duration="3723000" />
+      <workItem from="1714739281073" duration="923000" />
     </task>
     <servers />
   </component>
