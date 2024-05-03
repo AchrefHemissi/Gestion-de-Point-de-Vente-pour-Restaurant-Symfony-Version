@@ -1,20 +1,34 @@
-{% extends 'base.html.twig' %}
+{% include 'fragments/navBar.html.twig' %}
 
-{% block title %}Hello OrdersController!{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/medini/OneDrive/Desktop/Achref/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version/src/Controller/OrdersController.php</code></li>
-        <li>Your template at <code>C:/Users/medini/OneDrive/Desktop/Achref/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version/templates/orders/index.html.twig</code></li>
-    </ul>
+<div class="heading">
+    <h3>your orders</h3>
+    <p><a href="{{ path('home') }}">home </a> <span> / orders</span></p>
 </div>
-{% endblock %}
+
+<section class="orders">
+    <h1 class="title">placed orders</h1>
+
+    <div class="box-container">
+        <div class="orderbox box">
+            <p><b>Placed on :</b> <span>2024-05-03</span></p>
+            <p><b>Full Name : </b><span>John Doe</span></p>
+            <p><b>Email :</b> <span>john.doe@example.com</span></p>
+            <p><b>Address :</b> <span>123 Street, City, Country</span></p>
+            <p><b>Your Orders :</b> <span>Product 1(2) - Product 2(1) -</span></p>
+            <p><b>total price : </b><span>$60</span></p>
+            <p><b>payment method :</b> <span> Master Card</span></p>
+            <button class="pdfbutton">Save as PDF</button>
+        </div>
+    </div>
+</section>
+
+
+{% include 'fragments/loader.html.twig' %}
+
+
+</body>
+</html>
+
+
