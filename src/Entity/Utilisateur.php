@@ -22,10 +22,10 @@ class Utilisateur
     private ?string $prenom = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $email = null;
+    public ?string $email=null;
 
     #[ORM\Column(length: 255)]
-    private ?string $pass = null;
+    public ?string $pass=null;
 
     #[ORM\Column]
     private ?bool $is_banned = null;
@@ -78,7 +78,9 @@ class Utilisateur
 
     public function getEmail(): ?string
     {
+
         return $this->email;
+
     }
 
     public function setEmail(string $email): static
@@ -96,7 +98,6 @@ class Utilisateur
     public function setPass(string $pass): static
     {
         $this->pass = $pass;
-
         return $this;
     }
 
