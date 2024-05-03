@@ -1,20 +1,84 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Hello AboutController!{% endblock %}
+{% include "fragments/navBar.html.twig" %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/medini/OneDrive/Desktop/Achref/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version/src/Controller/AboutController.php</code></li>
-        <li>Your template at <code>C:/Users/medini/OneDrive/Desktop/Achref/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version/templates/about/index.html.twig</code></li>
-    </ul>
-</div>
-{% endblock %}
+   <div class="heading">
+      <h3>about us</h3>
+      <p><a href="home">home </a> <span> / about</span></p>
+   </div>
+
+   <section class="about">
+
+      <div class="row">
+
+         <div class="image">
+            <img src="{{asset('client/images/about-img.svg')}}" alt="">
+         </div>
+
+         <div class="content">
+            <h3>why choose us?</h3>
+            <p>Easy Online Ordering: Our user-friendly website makes ordering your favorite dishes quick and effortless. With just a few clicks, you can browse our menu, customize your order, and have it delivered straight to your doorstep.</br>
+               24/7 Accessibility: Craving your favorite dish late at night? No problem! Our website is available 24/7, so you can place an order whenever hunger strikes, day or night.
+            </p>
+            <a href="menu" class="btn">our menu</a>
+         </div>
+
+      </div>
+
+   </section>
+
+
+   <section class="steps">
+      <div class="box-container">
+
+         <div class="box">
+            <img src="{{asset('client/images/step-1.png')}}" alt="">
+            <h3>select food</h3>
+            <p>Easy access to the whole menu</p>
+         </div>
+
+         <div class="box">
+            <img src="{{asset('client/images/step-3.png')}}" alt="">
+            <h3>Enjoy Your Meal!</h3>
+            <p>Good Food Is Good Mood</p>
+         </div>
+
+      </div>
+
+   </section>
+
+
+
+
+
+
+   <footer class="footer">
+
+      <section class="box-container">
+
+         <div class="box">
+            <img src="{{asset('client/images/clock-icon.png')}}" alt="">
+            <h3>Open</h3>
+            <p>24/7</p>
+         </div>
+
+         <div class="box">
+            <img src="{{asset('client/images/map-icon.png')}}" alt="">
+            <h3>our address</h3>
+            <a href="https://www.google.com/maps/place/National+Institute+of+Applied+Science+and+Technology/@36.8429603,10.1830144,15z/data=!4m10!1m2!2m1!1s+676+Centre+Urbain+Nord+BP,+Tunis+1080!3m6!1s0x12fd34c6d1e93bef:0x4153c4733f285343!8m2!3d36.8429605!4d10.1970209!15sCiU2NzYgQ2VudHJlIFVyYmFpbiBOb3JkIEJQLCBUdW5pcyAxMDgwIgOIAQGSARFwdWJsaWNfdW5pdmVyc2l0eeABAA!16s%2Fm%2F0h52xyw?entry=ttu">676 Centre Urbain Nord BP, Tunis 1080</a>
+         </div>
+
+
+      </section>
+
+      <div class="credit"></div>
+
+   </footer>
+
+
+{% include "fragments/loader.html.twig" %}
+
+</body>
+
+</html>
