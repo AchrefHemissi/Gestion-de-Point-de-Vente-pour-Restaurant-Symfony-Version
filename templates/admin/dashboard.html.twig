@@ -63,15 +63,19 @@
         </div>
     </nav>
     <div class="home-content">
+        {% for message in app.session.flashBag.get('success') %}
+            <div class="alert alert-success " id="alertemailsuccess"  style="display: flex">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.session.flashBag.get('danger') %}
+            <div class="alert alert-danger" id="alertemaildanger" style="display:flex">
+                {{ message }}
+            </div>
+        {% endfor %}
+
 
         <div class="sales-boxes" id="salesBoxes">
-            {% for message in app.flashes('success') %}
-                {{ message }}
-            {% endfor %}
-            {% for message in app.flashes('failed') %}
-                {{ message }}
-            {% endfor %}
-
             <div class="top-sales box moving">
                 <div class="title"><b>Top Selling Products</b></div>
                 <ul class="top-sales-details" id="product-list">
@@ -130,7 +134,7 @@
 
 </section>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
-<script src="{{ asset('admin.js') }}"></script>
+<script src="{{ asset('admin.js?1.4') }}"></script>
 <script>
     const ctx = document.getElementById('myChart');
     let chart;

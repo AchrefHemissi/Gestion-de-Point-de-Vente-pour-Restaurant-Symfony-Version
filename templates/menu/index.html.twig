@@ -1,20 +1,48 @@
-{% extends 'base.html.twig' %}
+{% include 'fragments/navBar.html.twig' %}
 
-{% block title %}Hello MenuController!{% endblock %}
+<html>
+<body>
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+  <div class="heading">
+    <h3>our menu</h3>
+    <p><a href="home">home </a> <span> / menu</span></p>
+  </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/medini/OneDrive/Desktop/Achref/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version/src/Controller/MenuController.php</code></li>
-        <li>Your template at <code>C:/Users/medini/OneDrive/Desktop/Achref/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version/templates/menu/index.html.twig</code></li>
-    </ul>
+<section class="products">
+    <h1 class="title">latest dishes</h1>
+
+    <div class="box-container">
+        {% include 'fragments/pizzaProduct.html.twig' %}
+        {% include 'fragments/spaghettiProduct.html.twig' %}
+        {% include 'fragments/hamburgerProduct.html.twig' %}
+        {% include 'fragments/cheeseCakeProduct.html.twig' %}
+        {% include 'fragments/orangeJuiceProduct.html.twig' %}
+        {% include 'fragments/chawarmaProduct.html.twig' %}
+        {% include 'fragments/friesProduct.html.twig' %}
+    </div>
+</section>
+
+<div class="loader">
+    <img src="{{ asset('client/images/loader.gif') }}" alt="" />
 </div>
-{% endblock %}
+
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<script src="{{ asset('client/js/script.js') }}"></script>
+
+<script>
+    var swiper = new Swiper(".home-slider", {
+        loop: true,
+        grabCursor: true,
+        effect: "flip",
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+</script>
+<script src="{{ asset('client/js/total_price.js') }}"></script>
+</body>
+
+</html>

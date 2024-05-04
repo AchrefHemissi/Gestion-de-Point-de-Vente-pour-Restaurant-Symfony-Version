@@ -12,6 +12,8 @@ function showCustomers() {
     document.getElementById("ordersList").style.display = "none";
     document.querySelector(".chartcontainer").style.display = "none";
     document.getElementById("emailForm").style.display = "none";
+    document.getElementById("alertemailsuccess").style.display = "none";
+    document.getElementById("alertemaildanger").style.display = "none";
 }
 
 function showDashboard() {
@@ -20,6 +22,8 @@ function showDashboard() {
     document.getElementById("salesBoxes").style.display = "flex";
     document.querySelector(".chartcontainer").style.display = "flex";
     document.getElementById("emailForm").style.display = "none";
+    document.getElementById("alertemailsuccess").style.display = "flex";
+    document.getElementById("alertemaildanger").style.display = "flex";
 }
 function showOrders() {
     document.getElementById("customersList").style.display = "none";
@@ -27,6 +31,9 @@ function showOrders() {
     document.getElementById("salesBoxes").style.display = "none";
     document.querySelector(".chartcontainer").style.display = "none";
     document.getElementById("emailForm").style.display = "none";
+    document.getElementById("alertemail").style.display = "none";
+    document.getElementById("alertemailsuccess").style.display = "none";
+    document.getElementById("alertemaildanger").style.display = "none";
 }
 function showMessages() {
     document.getElementById("customersList").style.display = "none";
@@ -34,6 +41,8 @@ function showMessages() {
     document.getElementById("salesBoxes").style.display = "none";
     document.querySelector(".chartcontainer").style.display = "none";
     document.getElementById("emailForm").style.display = "flex";
+    document.getElementById("alertemailsuccess").style.display = "none";
+    document.getElementById("alertemaildanger").style.display = "none";
 }
 
 // Select all ban buttons
