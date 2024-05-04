@@ -19,6 +19,7 @@ $produit->setName($faker->word);
 $produit->setPrix($faker->randomNumber(2));
 $produit->setVendu($faker->randomNumber(2));
 $produit->set_is_Drink($faker->boolean);
+$produit->setImgPath("https://picsum.photos/200/300");
 
 $manager->persist($produit);
     $manager->flush();

@@ -39,7 +39,7 @@
         </div>
 
         <div class="profile">
-            <p class="name">Me</p> {# Replace me with your user variable from session when you finally know how to make the sseion #}
+            <p class="name">{{app.session.get('id').getNom()}}</p> {# Replace me with your user variable from session when you finally know how to make the sseion #}
             <div class="flex">
                 <a href="{{ path('profile') }}" class="btn">profile</a>
                 <a href="{{ path('logout') }}" class="delete-btn">logout</a>

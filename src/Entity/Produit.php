@@ -25,6 +25,9 @@ class Produit
     #[ORM\Column]
     private ?bool $is_drink = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $imgPath = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Produit
     public function set_is_Drink(bool $is_drink): static
     {
         $this->is_drink = $is_drink;
+
+        return $this;
+    }
+
+    public function getImgPath(): ?string
+    {
+        return $this->imgPath;
+    }
+
+    public function setImgPath(string $imgPath): static
+    {
+        $this->imgPath = $imgPath;
 
         return $this;
     }

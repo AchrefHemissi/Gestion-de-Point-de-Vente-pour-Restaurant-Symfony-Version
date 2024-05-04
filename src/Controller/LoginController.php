@@ -15,7 +15,7 @@ class LoginController extends AbstractController
 #[Route('/login', name: 'login_page')]
 public function login(Request $request,EntityManagerInterface $entityManager,LoggerInterface $logger)
 {
-
+$session=$request->getSession();//start session
 
 
 $loginForm = $this->createForm(LoginType::class);
@@ -36,8 +36,11 @@ if ($loginForm->isSubmitted() && $loginForm->isValid() ) {
     else{
         $storedPassword = $user->getPass();
         if ($password=== $storedPassword) {
-            if(!$user->get_is_Admin())
+            if(!$user->get_is_Admin()){
+                $session->set('id', $user); // store user id in session
                 return $this->redirectToRoute('home');
+                
+                }
             else
                 return $this->redirectToRoute('dashboard');
         } else {
