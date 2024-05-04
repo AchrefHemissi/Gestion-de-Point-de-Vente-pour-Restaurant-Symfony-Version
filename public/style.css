@@ -221,3 +221,17 @@ body {
     padding: 10px;
     font-family: Arial, sans-serif;
 }
+
+.alert-success{
+    color: #1c7430;
+    text-shadow: 0px 0px 10px #0ccc2f;
+    font-size: 30px;
+    padding: 10px;
+}
+.alert-danger {
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    color: #d11827;
+    text-shadow: 0px 0px 10px #f44336;
+    padding: 10px;
+}
