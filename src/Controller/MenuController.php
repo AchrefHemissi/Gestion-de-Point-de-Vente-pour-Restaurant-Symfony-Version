@@ -16,16 +16,29 @@ class MenuController extends AbstractController
     #[Route('/menu', name: 'menu')]
     public function index( Request $request ): Response
     {
+        $session=$request->getSession();
+        $cart=$session->get('cart');
         $form = $this->createForm(ProductType::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            dd($form->getData());
-        }
+
         $form1 = $this->createForm(ProductType::class);
         $form1->handleRequest($request);
-        if ($form1->isSubmitted() && $form1->isValid()) {
-            dd($form1->getData());
+
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            return $this->add($request, $form);
         }
+
+        if ($form1->isSubmitted() && $form1->isValid()) {
+
+            return $this->add($request, $form1);
+        }
+
+
+
+
 
         return $this->render('menu/index.html.twig', [
             'controller_name' => 'MenuController',
@@ -33,5 +46,20 @@ class MenuController extends AbstractController
             'form1' => $form1->createView()
 
         ]);
+    }
+    public function add(Request $request, $form):Response
+    {
+        $session=$request->getSession();
+        $cart=$session->get('cart');
+        $cart[]=[
+            'id'=>$form->get('id')->getData(),
+            'quantity'=>$form->get('quantity')->getData()
+        ];
+        $session->set('cart',$cart);
+        return $this->redirectToRoute('cart');
+    }
+
+    private function path(string $string, array $array)
+    {
     }
 }

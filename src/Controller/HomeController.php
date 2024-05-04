@@ -15,10 +15,9 @@ class HomeController extends AbstractController
     {
         $session=$request->getSession();
         $person=$session->get('id');
-
-
-
-
+        if(!$session->get('cart') !== null){
+            $session->set('cart',[]);
+        }
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'person' => $person

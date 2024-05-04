@@ -1,7 +1,30 @@
 {% include 'fragments/navBar.html.twig' %}
-<div class="heading">
+<section class="product">
     <h3>shopping cart</h3>
     <p><a href="home.php">home </a> <span> / cart</span></p>
-</div>
+    {% set cart = app.session.get('cart') %}
+    {% if cart is empty %}
+        <h3>Cart is empty</h3>
+    {% else %}
+        <div class="cart">
+            <table border="black">
+                <tr>
+                    <th>id</th>
+                    <th>quantity</th>
+
+                </tr>
+                {% for item in cart %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.quantity }}</td>
+
+
+                    </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+    {% endif %}
+</section>
 
 {% include 'fragments/loader.html.twig' %}
