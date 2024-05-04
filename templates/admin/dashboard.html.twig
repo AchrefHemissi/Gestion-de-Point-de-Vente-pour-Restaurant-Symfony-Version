@@ -125,7 +125,9 @@
         {{ form_row(form.recipient) }}
         {{ form_row(form.subject) }}
         {{ form_row(form.message) }}
-        {{ form_row(form.send) }}
+        <div class="btnform-container">
+            {{ form_row(form.send) }}
+        </div>
         {{ form_end(form) }}
     </div>
 
@@ -296,6 +298,26 @@
     // Fetch products every 5 seconds
     fetchProducts();
     setInterval(fetchProducts, 5000);
+</script>
+
+<script>
+    // Select the flash message divs
+    const successAlert = document.getElementById('alertemailsuccess');
+    const dangerAlert = document.getElementById('alertemaildanger');
+
+    // Remove the success flash message after 5 seconds (5000 milliseconds)
+    if (successAlert) {
+        setTimeout(() => {
+            successAlert.style.opacity = '0';
+        }, 4000);
+    }
+
+    // Remove the danger flash message after 5 seconds (5000 milliseconds)
+    if (dangerAlert) {
+        setTimeout(() => {
+            dangerAlert.style.opacity = '0';
+        }, 4000);
+    }
 </script>
 
 

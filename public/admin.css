@@ -534,3 +534,102 @@ nav .profile-details i {
     border-radius: 12px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
+
+.alert-success{
+    width: 60%;
+    background-color: rgba(0, 244, 12, 0.58);
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 20px;
+    transition: opacity 1s ease-in-out;
+
+}
+
+.alert-danger{
+    width: 60%;
+    background-color: rgb(207, 36, 51);
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 20px;
+    transition: opacity 1s ease-in-out;
+
+}
+#admin_mail_send {
+    width: 100%;
+    margin: auto;
+    --color: #00A97F;
+    --color2: rgb(255, 255, 255);
+    padding: 0.8em 1.75em;
+    background-color: #d6fff2;
+    border-radius: 8px;
+    border: .3px solid var(--color);
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+    font-weight: 550;
+    font-size: 17px;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    color: var(--color);
+}
+
+#admin_mail_send::after, #admin_mail_send::before {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform: skew(90deg) translate(-50%, -50%);
+    position: absolute;
+    inset: 50%;
+    left: 25%;
+    z-index: -1;
+    transition: .5s ease-out;
+    background-color: var(--color);
+}
+
+#admin_mail_send::before {
+    top: -50%;
+    left: -25%;
+    transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+}
+
+#admin_mail_send:hover::before {
+    transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+}
+
+#admin_mail_send:hover::after {
+    transform: skew(45deg) translate(-50%, -50%);
+}
+
+#admin_mail_send:hover {
+    color: var(--color2);
+}
+
+#admin_mail_send:active {
+    filter: brightness(.7);
+    transform: scale(.98);
+}
+.btnform-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    padding: 0 40px;
+    height: 100%;
+}

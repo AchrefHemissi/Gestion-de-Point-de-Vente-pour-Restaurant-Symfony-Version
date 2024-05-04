@@ -8,12 +8,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Psr\Log\LoggerInterface;
+
 
 class LoginController extends AbstractController
 {
 #[Route('/login', name: 'login_page')]
-public function login(Request $request,EntityManagerInterface $entityManager,LoggerInterface $logger)
+public function login(Request $request,EntityManagerInterface $entityManager)
 {
 $session=$request->getSession();//start session
 
@@ -26,9 +26,7 @@ if ($loginForm->isSubmitted() && $loginForm->isValid() ) {
     $user=new Utilisateur();
     $formData = $loginForm->getData();
     $email = $formData->getEmail();
-    var_dump($email);
     $password = $formData->getPass();
-    var_dump($password);
     $user = $entityManager->getRepository(Utilisateur::class)->findOneBy(['email' => $email]);
     if (!$user) {
         $this->addFlash('danger', 'Invalid credentials.');
@@ -66,7 +64,7 @@ $user=new Utilisateur();
         $entityManager->persist($newuser);
         $entityManager->flush();
         $this->addFlash('success', 'Registration successful!');
-        return $this->redirectToRoute('home');
+        //return $this->redirectToRoute('home');  ken t7b tredirigiha l page d'accueil
     }
     else{
         $this->addFlash('danger', 'This email is already in use');
