@@ -22,6 +22,10 @@
         {% include 'fragments/orangeJuiceProduct.html.twig' %}
         {% include 'fragments/chawarmaProduct.html.twig' %}
         {% include 'fragments/friesProduct.html.twig' %}
+        {% include 'fragments/friedChickenProduct.html.twig' %}
+        {% include 'fragments/mojitoProduct.html.twig' %}
+        {% include 'fragments/tiramisuProduct.html.twig' %}
+        
     </div>
 </section>
 
@@ -47,15 +51,17 @@
   <script>
       document.addEventListener('DOMContentLoaded', function() {
            quantity = document.querySelectorAll("#product_quantity");
-          const price = 3;
+          let price = 3;
           //const position=this.parentNode.parentNode.firstElementChild.firstElementChild.innerText;
           const subTotal = document.querySelector('#piz');
           quantity.forEach(function(item) {
                 item.addEventListener('change', function() {
-                    console.log(this.value);
-                    console.log(this.parentNode.parentNode.firstElementChild.firstElementChild.innerText);
-                    console.log(this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling);
-                    this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling.textContent = this.value * price;
+                    //console.log(this.value); //quantity
+                    //console.log(this.parentNode.parentNode.firstElementChild.firstElementChild.innerText); // $
+                    //console.log(this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling); //total price
+                    //price = this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling;
+                    let unitPrice = this.parentNode.parentNode.nextElementSibling.firstElementChild.innerText; //unit price
+                    this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling.textContent = unitPrice * this.value;
                 });
            });
 

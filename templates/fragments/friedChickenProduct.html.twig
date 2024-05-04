@@ -1,0 +1,16 @@
+
+ {{ form_start(form7, {'action': path('menu'), 'method': 'POST', 'attr': {'class': 'box'}}) }}
+    {{ form_widget(form7.submit) }}
+ <img src="{{ asset('client/images/FriedChicken.jpg')  }}" alt="" />
+ <a href="{{ path('fast_food') }}" class="cat">fast food</a>
+ <div class="name">Fried Chicken</div>
+ {{ form_row(form7.id, {'value': 8}) }}
+
+ <div class="flex">
+     <div class="price"><span>$</span>13</div>
+     {{ form_row(form7.quantity) }}
+ </div>
+
+ <div class="sub-total">unit price : $ <span id="piz">13</span></div>
+ {{ form_end(form7) }}
+
