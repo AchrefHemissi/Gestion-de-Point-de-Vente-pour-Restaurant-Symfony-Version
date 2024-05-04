@@ -9,21 +9,121 @@ use Faker\Factory;
 
 class ProduitFixtures extends Fixture
 {
-public function load(ObjectManager $manager)
-{
-$faker = Factory::create();
+    public function load(ObjectManager $manager)
+    {
 
-for ($i = 0; $i < 8; $i++) {
-$produit = new Produit();
-$produit->setName($faker->word);
-$produit->setPrix($faker->randomNumber(2));
-$produit->setVendu($faker->randomNumber(2));
-$produit->set_is_Drink($faker->boolean);
-
-$manager->persist($produit);
-    $manager->flush();
-}
+        $produit = new Produit();
+        $produit->setName("Pizza");
+        $produit->setPrix("10");
+        $produit->setVendu(0);
+        $produit->set_is_Drink(0);
+        $produit->setImgPath("https://picsum.photos/200/300");
+        $manager->persist($produit);
+        $manager->flush();
 
 
-}
+
+        $produit = new Produit();
+        $produit->setName("Spaghetti");
+        $produit->setPrix(8);
+        $produit->setVendu(5);
+        $produit->set_is_Drink(0);
+        $produit->setImgPath("https://picsum.photos/200/300");
+        $manager->persist($produit);
+        $manager->flush();
+
+
+
+
+        $produit = new Produit();
+        $produit->setName("Hamburger");
+        $produit->setPrix(9);
+        $produit->setVendu(1);
+        $produit->set_is_Drink(0);
+        $produit->setImgPath("https://picsum.photos/200/300");
+        $manager->persist($produit);
+        $manager->flush();
+
+
+        $produit = new Produit();
+        $produit->setName("Chesscake");
+        $produit->setPrix(7);
+        $produit->setVendu(0);
+        $produit->set_is_Drink(0);
+        $produit->setImgPath("https://picsum.photos/200/300");
+        $manager->persist($produit);
+        $manager->flush();
+
+
+
+
+        $produit = new Produit();
+        $produit->setName("Orange Juice");
+        $produit->setPrix(3);
+        $produit->setVendu(2);
+        $produit->set_is_Drink(1);
+        $produit->setImgPath("https://picsum.photos/200/300");
+        $manager->persist($produit);
+        $manager->flush();
+
+
+
+
+
+        $produit = new Produit();
+        $produit->setName("Chawarma");
+        $produit->setPrix(6);
+        $produit->setVendu(4);
+        $produit->set_is_Drink(0);
+        $produit->setImgPath("https://picsum.photos/200/300");
+        $manager->persist($produit);
+        $manager->flush();
+
+        $produit = new Produit();
+        $produit->setName("Fries");
+        $produit->setPrix(2);
+        $produit->setVendu(0);
+        $produit->set_is_Drink(0);
+        $produit->setImgPath("https://picsum.photos/200/300");
+
+        $manager->persist($produit);
+        $manager->flush();
+
+
+        $produit = new Produit();
+        $produit->setName("FriedChiken");
+        $produit->setPrix(12);
+        $produit->setVendu(0);
+        $produit->set_is_Drink(0);
+        $produit->setImgPath("https://picsum.photos/200/300");
+
+        $manager->persist($produit);
+        $manager->flush();
+
+
+        $produit = new Produit();
+        $produit->setName("Mojito");
+        $produit->setPrix(5);
+        $produit->setVendu(0);
+        $produit->set_is_Drink(1);
+        $produit->setImgPath("https://picsum.photos/200/300");
+        $manager->persist($produit);
+        $manager->flush();
+
+
+        $produit = new Produit();
+        $produit->setName("Tiramisu");
+        $produit->setPrix(11);
+        $produit->setVendu(1);
+        $produit->set_is_Drink(0);
+        $produit->setImgPath("https://picsum.photos/200/300");
+        $manager->persist($produit);
+        $manager->flush();
+
+    }
+
+    public function getGroups(): array
+    {
+        return ['produit'];
+    }
 }

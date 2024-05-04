@@ -1,20 +1,90 @@
-{% extends 'base.html.twig' %}
+{# templates/contact/index.html.twig #}
 
-{% block title %}Hello ContactController!{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Contact us</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <!-- custom css file link  -->
+        <link rel="stylesheet" href="{{ asset('client/css/style.css') }}">
+        <link rel="shortcut icon" type="x-icon" href="{{ asset('images/logo.png') }}" />
+    </head>
+<body>
+<header class="header">
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <section class="flex">
+        <a href="{{ path ('home')}}" class="logo"><b>GL-icious </b> 😋</a>
+        <nav class="navbar">
+            <a href="{{ path ('home')}}">home</a>
+            <a href="{{ path ('about')}}">about</a>
+            <a href="{{ path ('menu')}}">menu</a>
+            <a href="{{ path ('orders')}}">orders</a>
+            <a href="{{ path ('contact')}}">contact</a>
+        </nav>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div class="icons">
+            <a href="{{ path ('search')}}"><i class="fas fa-search"></i></a>
+            <a href="{{ path ('cart')}}"><i class="fas fa-shopping-cart"></i><span></span></a>
+            <div id="user-btn" class="fas fa-user"></div>
+            <div id="menu-btn" class="fas fa-bars"></div>
+        </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/medini/OneDrive/Desktop/Achref/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version/src/Controller/ContactController.php</code></li>
-        <li>Your template at <code>C:/Users/medini/OneDrive/Desktop/Achref/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version/templates/contact/index.html.twig</code></li>
-    </ul>
+        <div class="profile">
+            <p class="name"></p>
+            <div class="flex">
+                <a href="{{ path ('profile')}}" class="btn">profile</a>
+                <a href="{{ path ('logout')}}" class="delete-btn">logout</a>
+            </div>
+        </div>
+    </section>
+
+</header>
+
+<div class="heading">
+    <h3>Contact Us</h3>
+    <p><a href="{{ path('home') }}">Home</a>/Contact</p>
 </div>
-{% endblock %}
+<section class="contact">
+    <div class="row">
+        <div class="image">
+            <embed src="{{ asset('client/images/contact-img.svg') }}">
+        </div>
+
+        {{ form_start(form, {'attr': {'class': 'contact-form'}}) }}
+        <h3>Tell us something!</h3>
+        {{ form_row(form.email) }}
+        {{ form_row(form.message)}}
+        <button type="submit" class="btn">Send Message</button>
+        {{ form_end(form) }}
+
+    </div>
+</section>
+<footer class="footer">
+
+    <section class="box-container">
+
+        <div class="box">
+            <img src="{{ asset('client/images/email-icon.png') }}" alt="">
+            <h3>our email</h3>
+            <a href="mailto:gl.icious.team@gmail.com">gl.icious.team@gmail.com</a>
+        </div>
+
+        <div class="box">
+            <img src="{{ asset('client/images/phone-icon.png') }}" alt="">
+            <h3>our number</h3>
+            <a href="tel: +216 0000 0000">+216 0000 0000</a>
+        </div>
+
+    </section>
+
+    <div class="credit"><span></span></div>
+
+</footer>
+
+<div class="loader">
+    <img src="{{ asset('client/images/loader.gif') }}" alt="">
+</div>
+
+<script src="{{ asset('client/js/script.js') }}"></script>
+
+</body>
