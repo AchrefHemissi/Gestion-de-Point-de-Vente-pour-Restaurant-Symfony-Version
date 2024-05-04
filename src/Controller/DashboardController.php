@@ -26,7 +26,6 @@ class DashboardController extends AbstractController
         $repository = $doctrine->getRepository(Utilisateur::class);
         $users = $repository->findAll();
 
-
         $form = $this->generateForm($request);
 
         if($request->isMethod('Post'))

@@ -17,7 +17,7 @@ class ProduitFixtures extends Fixture
         $produit->setPrix("10");
         $produit->setVendu(0);
         $produit->set_is_Drink(0);
-        $produit->setImgPath("https://picsum.photos/200/300");
+        $produit->setImgPath("client/uploaded_img/pizza-1.png");
         $manager->persist($produit);
         $manager->flush();
 
@@ -28,7 +28,7 @@ class ProduitFixtures extends Fixture
         $produit->setPrix(8);
         $produit->setVendu(5);
         $produit->set_is_Drink(0);
-        $produit->setImgPath("https://picsum.photos/200/300");
+        $produit->setImgPath("client/images/spaghetti.jpg");
         $manager->persist($produit);
         $manager->flush();
 
@@ -40,7 +40,7 @@ class ProduitFixtures extends Fixture
         $produit->setPrix(9);
         $produit->setVendu(1);
         $produit->set_is_Drink(0);
-        $produit->setImgPath("https://picsum.photos/200/300");
+        $produit->setImgPath("client/uploaded_img/burger-1.png");
         $manager->persist($produit);
         $manager->flush();
 
@@ -62,7 +62,7 @@ class ProduitFixtures extends Fixture
         $produit->setPrix(3);
         $produit->setVendu(2);
         $produit->set_is_Drink(1);
-        $produit->setImgPath("https://picsum.photos/200/300");
+        $produit->setImgPath("client/uploaded_img/drink-1.png");
         $manager->persist($produit);
         $manager->flush();
 
@@ -75,7 +75,7 @@ class ProduitFixtures extends Fixture
         $produit->setPrix(6);
         $produit->setVendu(4);
         $produit->set_is_Drink(0);
-        $produit->setImgPath("https://picsum.photos/200/300");
+        $produit->setImgPath("'client/images/chawarma.avif'");
         $manager->persist($produit);
         $manager->flush();
 
@@ -84,7 +84,7 @@ class ProduitFixtures extends Fixture
         $produit->setPrix(2);
         $produit->setVendu(0);
         $produit->set_is_Drink(0);
-        $produit->setImgPath("https://picsum.photos/200/300");
+        $produit->setImgPath('client/images/fries.jpg');
 
         $manager->persist($produit);
         $manager->flush();
