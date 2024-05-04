@@ -21,6 +21,8 @@ class ProductType extends AbstractType
             ])
             ->add('quantity', IntegerType::class, // Change the input type to IntegerType
                 [
+                    'label' => false,
+                    'data' => 1, // default value
                     'attr' => [
                         'class'=> 'qty',
                         'min' => 1,
@@ -29,8 +31,10 @@ class ProductType extends AbstractType
                 ])
 
             ->add('submit', SubmitType::class, [
+                'label' => false,
                 'attr' => [
-                    'class' => 'fas fa-shopping-cart'
+                    'class' => 'fas fa-shopping-cart',
+
                 ],
             ])
 

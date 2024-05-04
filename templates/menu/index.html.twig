@@ -13,6 +13,8 @@
     <h1 class="title">latest dishes</h1>
 
     <div class="box-container">
+
+
         {% include 'fragments/pizzaProduct.html.twig' %}
         {% include 'fragments/spaghettiProduct.html.twig' %}
         {% include 'fragments/hamburgerProduct.html.twig' %}
@@ -42,7 +44,24 @@
         },
     });
 </script>
-<script src="{{ asset('client/js/total_price.js') }}"></script>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+           quantity = document.querySelectorAll("#product_quantity");
+          const price = 3;
+          //const position=this.parentNode.parentNode.firstElementChild.firstElementChild.innerText;
+          const subTotal = document.querySelector('#piz');
+          quantity.forEach(function(item) {
+                item.addEventListener('change', function() {
+                    console.log(this.value);
+                    console.log(this.parentNode.parentNode.firstElementChild.firstElementChild.innerText);
+                    console.log(this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling);
+                    this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling.textContent = this.value * price;
+                });
+           });
+
+      });
+  </script>
+
 </body>
 
 </html>
