@@ -33,7 +33,6 @@ class DashboardController extends AbstractController
         {
             if ($form->isSubmitted() && $form->isValid()) {
                 $formData = $form->getData();
-
                 //send  the mail to the user
                 $mailer->sendEmail($formData);
                 $this->addFlash('success', 'Email sent successfully.');
