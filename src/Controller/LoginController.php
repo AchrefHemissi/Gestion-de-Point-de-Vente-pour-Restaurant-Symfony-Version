@@ -8,12 +8,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Psr\Log\LoggerInterface;
+
 
 class LoginController extends AbstractController
 {
 #[Route('/login', name: 'login_page')]
-public function login(Request $request,EntityManagerInterface $entityManager,LoggerInterface $logger)
+public function login(Request $request,EntityManagerInterface $entityManager)
 {
 
 
