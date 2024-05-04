@@ -26,14 +26,12 @@ class DashboardController extends AbstractController
         $repository = $doctrine->getRepository(Utilisateur::class);
         $users = $repository->findAll();
 
-
         $form = $this->generateForm($request);
 
         if($request->isMethod('Post'))
         {
             if ($form->isSubmitted() && $form->isValid()) {
                 $formData = $form->getData();
-
                 //send  the mail to the user
                 $mailer->sendEmail($formData);
                 $this->addFlash('success', 'Email sent successfully.');
