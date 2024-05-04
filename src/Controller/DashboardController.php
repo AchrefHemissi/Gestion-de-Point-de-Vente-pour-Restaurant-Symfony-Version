@@ -6,6 +6,7 @@ use App\Entity\Utilisateur;
 use App\Form\AdminMailType;
 use App\Service\SendMailFromAdminService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
@@ -25,29 +26,32 @@ class DashboardController extends AbstractController
         $repository = $doctrine->getRepository(Utilisateur::class);
         $users = $repository->findAll();
 
-        $form = $this->generateForm($request, $mailer);
+        $form = $this->generateForm($request);
 
-        return $this->render('admin/dashboard.html.twig', ['users' => $users, 'form' => $form]);
+        if($request->isMethod('Post'))
+        {
+            if ($form->isSubmitted() && $form->isValid()) {
+                $formData = $form->getData();
+                //send  the mail to the user
+                $mailer->sendEmail($formData);
+                $this->addFlash('success', 'Email sent successfully.');
+
+                return  $this ->redirectToRoute('dashboard');
+            }
+            else {
+
+                $this->addFlash('danger', "Email wasn't send");
+            }
+        }
+
+        return $this->render('admin/dashboard.html.twig', ['users' => $users, 'form' => $form->createView()]);
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     */
-    public function generateForm(Request $request, SendMailFromAdminService $mailer): FormView
+    public function generateForm(Request $request): FormInterface
     {
         $form = $this->createForm(AdminMailType::class);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $formData = $form->getData();
-            //send  the mail to the user
-            $mailer->sendEmail($formData);
-            $this->addFlash('success', 'Email sent successfully.');
-            // Clear the form
-            $form = $this->createForm(AdminMailType::class);
-
-        }
-        $this->addFlash('danger', "Email wasn't send");
-        return $form->createView();
+        return $form;
     }
 }

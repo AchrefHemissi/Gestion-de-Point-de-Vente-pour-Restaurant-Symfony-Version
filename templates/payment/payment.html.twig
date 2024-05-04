@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{{ asset('client/css/style1.css') }}">
+</head>
+
+<body>
+<div class="container">
+    <h2>Checkout</h2>
+
+    {% for flash_message in app.session.flashbag.get('danger') %}
+        <p style="color: red;">{{ flash_message }}</p>
+    {% endfor %}
+    {% for flash_message in app.session.flashbag.get('success') %}
+        <p style="color: green;">{{ flash_message }}</p>
+    {% endfor %}
+    {{ form_start(form) }}
+    {{ form_row(form.numero, {'attr': {'placeholder': 'Number'}}) }}
+    {{ form_row(form.code, {'attr': {'placeholder': 'Code'}}) }}
+    <button type="submit">Order</button>
+    {{ form_end(form) }}
+    <br>
+    <button onclick="redirectToCart()">Return to cart</button>
+</div>
+<script>
+    function redirectToCart() {
+
+        window.location.href = '{{ path('cart') }}';;
+    }
+</script>
+</body>
+
+
+</html>

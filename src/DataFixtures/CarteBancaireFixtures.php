@@ -13,15 +13,14 @@ public function load(ObjectManager $manager)
 {
 $faker = Factory::create();
 
-for ($i = 0; $i < 20; $i++) {
+
 $carteBancaire = new CarteBancaire();
-$carteBancaire->setNumero($faker->randomNumber(8));
-$carteBancaire->setMontant($faker->randomNumber(3));
-$carteBancaire->setCode($faker->randomNumber(3));
+$carteBancaire->setNumero(100100100);
+$carteBancaire->setMontant(1000000);
+$carteBancaire->setCode(123);
 
 $manager->persist($carteBancaire);
     $manager->flush();
-}
 
 
 }
