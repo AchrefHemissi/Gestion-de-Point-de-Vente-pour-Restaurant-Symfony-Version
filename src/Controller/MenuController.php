@@ -58,6 +58,26 @@ class MenuController extends AbstractController
             dd($form6->getData());
         }
 
+        $form7 = $this->createForm(ProductType::class);
+        $form7->handleRequest($request);
+        if ($form7->isSubmitted() && $form7->isValid()) {
+            dd($form7->getData());
+        }
+
+        $form8 = $this->createForm(ProductType::class);
+        $form8->handleRequest($request);
+        if ($form8->isSubmitted() && $form8->isValid()) {
+            dd($form8->getData());
+        }
+
+        $form9 = $this->createForm(ProductType::class);
+        $form9->handleRequest($request);
+        if ($form9->isSubmitted() && $form9->isValid()) {
+            dd($form9->getData());
+        }
+
+
+
 
         return $this->render('menu/index.html.twig', [
             'controller_name' => 'MenuController',
@@ -67,7 +87,10 @@ class MenuController extends AbstractController
             'form3' => $form3->createView(),
             'form4' => $form3->createView(),
             'form5' => $form3->createView(),
-            'form6' => $form3->createView()
+            'form6' => $form3->createView(),
+            'form7' => $form3->createView(),
+            'form8' => $form3->createView(),
+            'form9' => $form3->createView()
 
 
         ]);

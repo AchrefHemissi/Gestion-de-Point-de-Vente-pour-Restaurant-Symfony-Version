@@ -1,0 +1,15 @@
+ {{ form_start(form9, {'action': path('menu'), 'method': 'POST', 'attr': {'class': 'box'}}) }}
+    {{ form_widget(form9.submit) }}
+ <img src="{{ asset('client/uploaded_img/dessert-2.png')  }}" alt="" />
+ <a href="{{ path('dessert') }}" class="cat">dessert</a>
+ <div class="name">Tiramisu</div>
+ {{ form_row(form9.id, {'value': 10}) }}
+
+ <div class="flex">
+     <div class="price"><span>$</span>10</div>
+     {{ form_row(form9.quantity) }}
+ </div>
+
+ <div class="sub-total">unit price : $ <span id="piz">10</span></div>
+ {{ form_end(form9) }}
+
