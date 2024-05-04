@@ -1,17 +1,15 @@
-        <form action="cart.php" accept="" method="post" class="box">
 
-            <button class="fas fa-shopping-cart" type="submit" name="add_to_cart"></button>
-            <img src="{{ asset('client/images/chawarma.avif')}}" alt="" />
-            <a href="dishes.php" class="cat">dishes</a>
-            <div class="name">Chawarma</div>
-            <div class="flex">
-                <div class="price"><span>$</span>14 </div>
-                <input hidden name="id" value="6">
-                <input hidden name="name" value="Chawarma">
-                <input hidden name="price" value="14" class="unit-price">
-                <input hidden name="imglink" value="{{ asset('client/images/chawarma.avif')}}">
-                <input type="number" name="qty" class="qty" min="1" max="99" value="1" onkeypress="if(this.value.length == 2) return false;" />
+ {{ form_start(form5, {'action': path('menu'), 'method': 'POST', 'attr': {'class': 'box'}}) }}
+    {{ form_widget(form5.submit) }}
+ <img src="{{ asset('client/images/chawarma.avif')  }}" alt="" />
+ <a href="{{ path('dishes') }}" class="cat">dishes</a>
+ <div class="name">Chawarma</div>
+ {{ form_row(form5.id, {'value': 6}) }}
 
-            </div>
-            <div class="sub-total">total : $ <span>14</span></div>
-        </form>
+ <div class="flex">
+     <div class="price"><span>$</span>14</div>
+     {{ form_row(form5.quantity) }}
+ </div>
+
+ <div class="sub-total">unit price : $ <span id="piz">14</span></div>
+ {{ form_end(form5) }}
