@@ -17,17 +17,13 @@ class PdfController extends AbstractController
         $html = $request->request->get('html');
 
 
-
-        // Instantiate Dompdf with our options
         $dompdf = new Dompdf();
 
         // Load HTML to Dompdf
         $dompdf->loadHtml($html);
 
-        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
         $dompdf->setPaper('A4', 'portrait');
 
-        // Render the HTML as PDF
         $dompdf->render();
 
         // Stream the generated PDF directly to the browser
@@ -35,7 +31,7 @@ class PdfController extends AbstractController
             "Attachment" => false
         ]);
 
-        // Ensure that no further script execution can interfere with the PDF
+
         exit;
     }
 }
