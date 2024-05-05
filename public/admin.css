@@ -547,7 +547,7 @@ nav .profile-details i {
     justify-content: center;
     margin: auto;
     margin-bottom: 20px;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.8s ease-in-out;
 
 }
 
@@ -563,7 +563,7 @@ nav .profile-details i {
     justify-content: center;
     margin: auto;
     margin-bottom: 20px;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.8s ease-in-out;
 
 }
 #admin_mail_send {

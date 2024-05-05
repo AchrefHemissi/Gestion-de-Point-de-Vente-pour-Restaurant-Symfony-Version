@@ -63,7 +63,9 @@
         {{ form_start(form, {'attr': {'class': 'contact-form'}}) }}
         <h3>Tell us something!</h3>
         {{ form_row(form.email) }}
-        {{ form_row(form.message)}}
+
+        <div class="text-container"> {{ form_row(form.message)}}</div>
+
         <button type="submit" class="btn">Send Message</button>
         {{ form_end(form) }}
 
@@ -96,5 +98,24 @@
 </div>
 
 <script src="{{ asset('client/js/script.js') }}"></script>
+<script>
+    // Select the flash message divs
+    const successAlert = document.getElementById('alertemailsuccess');
+    const dangerAlert = document.getElementById('alertemaildanger');
+
+    // Remove the success flash message after 3 seconds
+    if (successAlert) {
+        setTimeout(() => {
+            successAlert.style.opacity = '0';
+        }, 3000);
+    }
+
+    // Remove the danger flash message after 3 seconds
+    if (dangerAlert) {
+        setTimeout(() => {
+            dangerAlert.style.opacity = '0';
+        }, 3000);
+    }
+</script>
 
 </body>
