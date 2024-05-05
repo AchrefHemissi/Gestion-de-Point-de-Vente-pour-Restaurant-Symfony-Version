@@ -50,7 +50,7 @@ class ProduitFixtures extends Fixture
         $produit->setPrix(7);
         $produit->setVendu(0);
         $produit->set_is_Drink(0);
-        $produit->setImgPath("https://picsum.photos/200/300");
+        $produit->setImgPath("client/images/cheesecake.jpg");
         $manager->persist($produit);
         $manager->flush();
 
@@ -75,7 +75,7 @@ class ProduitFixtures extends Fixture
         $produit->setPrix(6);
         $produit->setVendu(4);
         $produit->set_is_Drink(0);
-        $produit->setImgPath("'client/images/chawarma.avif'");
+        $produit->setImgPath("client/images/chawarma.avif");
         $manager->persist($produit);
         $manager->flush();
 

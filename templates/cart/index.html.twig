@@ -1,30 +1,45 @@
 {% include 'fragments/navBar.html.twig' %}
-<section class="product">
+<div class="heading">
     <h3>shopping cart</h3>
-    <p><a href="home.php">home </a> <span> / cart</span></p>
-    {% set cart = app.session.get('cart') %}
-    {% if cart is empty %}
-        <h3>Cart is empty</h3>
-    {% else %}
-        <div class="cart">
-            <table border="black">
-                <tr>
-                    <th>id</th>
-                    <th>quantity</th>
-
-                </tr>
-                {% for item in cart %}
-                    <tr>
-                        <td>{{ item.id }}</td>
-                        <td>{{ item.quantity }}</td>
+    <p><a href="{{ path('home') }}">home </a> <span> / cart</span></p>
+</div>
 
 
-                    </tr>
-                {% endfor %}
-            </table>
-
-        </div>
-    {% endif %}
-</section>
 
 {% include 'fragments/loader.html.twig' %}
+
+<section class="products">
+    <h1 class="title">Your Cart</h1>
+    <div class="box-container">
+        {% set totalprice = 0 %}
+        {% set cart = app.session.get('cart') %}
+        {% if cart == [] %}
+            <div class="empty-cart">
+                <h1 style="color: red; font-size: 30px;">Your cart is empty</h1>
+
+
+
+            </div>
+        {% endif %}
+        {% for product in cart %}
+            <div class="box">
+                <button class="fas fa-times delete-btn" type="button" data-product-id="{{ product['id'] }}"></button>
+
+                    <img src="{{ product['imgPath'] }}" alt="">
+
+                <div class="name">{{ product['name'] }}</div>
+                <div class="flex">
+                    <div class="price"><span> $</span>{{ product['price'] * product['quantity'] }}</div>
+                    {% set totalprice = totalprice + product['price'] * product['quantity'] %}
+                    <input type="number" readonly name="qty" class="qty" min="1" max="99" value="{{ product['quantity'] }}">
+                </div>
+                <div class="sub-total">Unit price: <span>{{ product['price'] }}</span></div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="cart-total">
+        <p>Grand total: {{totalprice}}<span> $</span></p>
+        <a href="{{ path('home') }}" class="btn">Checkout Orders</a>
+    </div>
+</section>
+

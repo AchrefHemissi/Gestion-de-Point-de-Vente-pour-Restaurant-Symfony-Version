@@ -1,20 +1,67 @@
-{% extends 'base.html.twig' %}
+{% include 'fragments/navBar.html.twig' %}
 
-{% block title %}Hello DrinksController!{% endblock %}
+<html>
+<body>
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+  <div class="heading">
+    <h3>our menu</h3>
+    <p><a href="home">home </a> <span> / Drinks</span></p>
+  </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/DELL/Desktop/Resto_Symfony/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version/src/Controller/DrinksController.php</code></li>
-        <li>Your template at <code>C:/Users/DELL/Desktop/Resto_Symfony/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version/templates/drinks/index.html.twig</code></li>
-    </ul>
+<section class="products">
+    <h1 class="title"></h1>
+
+    <div class="box-container">
+
+        {% include 'fragments/orangeJuiceProduct.html.twig' %}
+        {% include 'fragments/mojitoProduct.html.twig'%}
+
+        
+    </div>
+
+
+    <div class="loader">
+    <img src="{{ asset('client/images/loader.gif') }}" alt="" />
 </div>
-{% endblock %}
+
+
+
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<script src="{{ asset('client/js/script.js') }}"></script>
+
+<script>
+    var swiper = new Swiper(".home-slider", {
+        loop: true,
+        grabCursor: true,
+        effect: "flip",
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+</script>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+           quantity = document.querySelectorAll("#product_quantity");
+          let price = 3;
+          //const position=this.parentNode.parentNode.firstElementChild.firstElementChild.innerText;
+          const subTotal = document.querySelector('#piz');
+          quantity.forEach(function(item) {
+                item.addEventListener('change', function() {
+                    //console.log(this.value); //quantity
+                    //console.log(this.parentNode.parentNode.firstElementChild.firstElementChild.innerText); // $
+                    //console.log(this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling); //total price
+                    //price = this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling;
+                    let unitPrice = this.parentNode.parentNode.nextElementSibling.firstElementChild.innerText; //unit price
+                    this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling.textContent = unitPrice * this.value;
+                });
+           });
+
+      });
+  </script>
+
+</body>
+
+</html>

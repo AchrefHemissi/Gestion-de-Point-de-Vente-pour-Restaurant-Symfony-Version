@@ -2,8 +2,8 @@
  {{ form_start(form1, {'action': path('menu'), 'method': 'POST', 'attr': {'class': 'box'}}) }}
     {{ form_widget(form1.submit) }}
  <img src="{{ asset('client/images/spaghetti.jpg')  }}" alt="" />
- <a href="{{ path('fast_food') }}" class="cat">fast food</a>
- <div class="name">pasta</div>
+ <a href="{{ path('dishes') }}" class="cat">dishes</a>
+ <div class="name">Spaghetti</div>
  {{ form_row(form1.id, {'value': 2}) }}
 
  <div class="flex">
