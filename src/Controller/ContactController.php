@@ -19,7 +19,10 @@ class ContactController extends AbstractController
     #[Route('/contact', name: 'contact')]
     public function index(Request $request,SendMailFromAdminService $mailer): Response
 
-    {
+    {   $session = $request->getSession();
+        $id = $session->get('id');
+        if(!$id)
+            return $this->redirectToRoute('login_page');
         $contactform = $this->createForm(ContactType::class);
         $contactform->handleRequest($request);
 
