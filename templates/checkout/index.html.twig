@@ -1,0 +1,54 @@
+{% include 'fragments/navBar.html.twig' %}
+
+<div class="heading">
+    <h3>checkout</h3>
+    <p><a href="home.php">home </a> <span> / checkout</span></p>
+</div>
+
+<section class="checkout">
+
+    <h1 class="title">order summary</h1>
+
+    {{ form_start(form, {'action': path('menu'), 'method': 'POST'}) }}
+        <div class="cart-items">
+            <h3>cart items</h3>
+            {% set cart =app.session.get('cart') %}
+            {% set total = 0 %}
+            {% for item in cart %}
+                {% set total = total + item['quantity'] * item['price'] %}
+                <p><span class="name">{{ item['name'] ~ ' : ' ~ item['quantity'] }}</span><span class="price">{{ item['quantity'] * item['price'] }}$</span></p>
+            {% endfor %}
+            <p class="grand-total"><span class="name">grand total :</span> <span class="price">{{ total ~ '$' }}</span></p>
+
+            <a href="{{ path('cart') }}" class="btn">view cart</a>
+        </div>
+        <div class="user-info">
+            <h3>your info</h3>
+            <p><i class="fas fa-user"></i><span> {{ app.session.get('id').getNom() }}</span></p>
+            <p><i class="fas fa-phone"></i><span> {{ app.session.get('id').getNumTel()  }}</span></p>
+            <p><i class="fas fa-envelope"></i> <span>{{ app.session.get('id').getEmail()  }}</span></p>
+
+            <h3>delivery address </h3>
+             {{ form_row(form.address) }} <br>
+
+            {{ form_row(form.method) }}
+        </div>
+    <br>
+        {{ form_row(form.submit) }}
+
+</section>
+
+
+
+<div class="loader">
+    <img src="{{ asset("client/images/loader.gif") }}" alt="">
+</div>
+
+<script src="{{ asset("client/js/script.js") }}"></script>
+
+</body>
+
+</html>
+
+
+

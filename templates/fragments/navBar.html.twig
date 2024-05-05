@@ -33,7 +33,7 @@
 
         <div class="icons">
             <a href="{{ path('search') }}"><i class="fas fa-search"></i></a>
-            <a href="{{ path('cart') }}"><i class="fas fa-shopping-cart"></i><span>{{ cart_items|default(0) }}</span></a> {# Replace cart_items with your session variable #}
+            <a href="{{ path('cart') }}"><i class="fas fa-shopping-cart"></i><span>{{  '(' ~ app.session.get('cart')|length ~ ')' }}</span></a> {# Replace cart_items with your session variable #}
             <div id="user-btn" class="fas fa-user"></div>
             <div id="menu-btn" class="fas fa-bars"></div>
         </div>
