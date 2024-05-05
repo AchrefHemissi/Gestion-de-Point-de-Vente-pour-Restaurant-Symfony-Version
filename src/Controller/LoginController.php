@@ -42,7 +42,9 @@ if ($loginForm->isSubmitted() && $loginForm->isValid() ) {
                 return $this->redirectToRoute('home');
                 }
             else
+            {   $session->set('id', $user); // store user id in session
                 return $this->redirectToRoute('dashboard');
+            }
         } else {
             $this->addFlash('danger', 'Invalid credentials.');
         }
