@@ -45,6 +45,16 @@
     <p><a href="{{ path('home') }}">Home</a>/Contact</p>
 </div>
 <section class="contact">
+    {% for message in app.session.flashBag.get('success') %}
+        <div class="alert alert-success " id="alertemailsuccess"  style="display: flex">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.session.flashBag.get('danger') %}
+        <div class="alert alert-danger" id="alertemaildanger" style="display:flex">
+            {{ message }}
+        </div>
+    {% endfor %}
     <div class="row">
         <div class="image">
             <embed src="{{ asset('client/images/contact-img.svg') }}">

@@ -32,15 +32,22 @@ class DashboardController extends AbstractController
         {
             if ($form->isSubmitted() && $form->isValid()) {
                 $formData = $form->getData();
+
                 //send  the mail to the user
-                $mailer->sendEmail($formData);
-                $this->addFlash('success', 'Email sent successfully.');
+                if($mailer->sendEmail($formData['recipient'],$formData['subject'],$formData['message'],'gl.icious.symfonyteam@gmail.com'))
+                {
+                    $this->addFlash('success', 'Email sent successfully.');
+                }
+                else {
+                    $this->addFlash('danger', "We're sorry, but we were unable to send your message at this time. Please try again later.");
+                }
 
                 return  $this ->redirectToRoute('dashboard');
             }
             else {
 
-                $this->addFlash('danger', "Email wasn't send");
+                $this->addFlash('danger', "We're sorry, but your form submission is not valid. Please check the fields and try again.");
+
             }
         }
 

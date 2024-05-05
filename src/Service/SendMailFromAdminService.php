@@ -8,26 +8,26 @@ use Symfony\Component\Mime\Email;
 
 class SendMailFromAdminService
 {
-     public function __construct(private MailerInterface $mailer){}
-
+    public function __construct(private MailerInterface $mailer){}
 
     /**
      * @throws TransportExceptionInterface
      */
-    public function sendEmail(mixed $formData): void
+    public function sendEmail(string $recipient,string $subject,string $message,string $from): bool
     {
-
-        $recipient = $formData['recipient'];
-        $subject = $formData['subject'];
-        $message = $formData['message'];
-
-        $email = (new Email())
-                ->from('gl.icious.symfonyteam@gmail.com')
+        try {
+            $email = (new Email())
+                ->from($from)
                 ->to($recipient)
                 ->subject($subject)
                 ->text($message);
 
-        $this->mailer->send($email);
+            $this->mailer->send($email);
+            return true;
 
+        } catch (TransportExceptionInterface $e) {
+
+            return false;
+        }
     }
 }
