@@ -19,6 +19,15 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+            - '../src/DataFixtures/'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\DataFixtures\ProduitFixtures:
+        tags: ['doctrine.fixture.orm']
+
+    App\DataFixtures\UtilisateurFixtures:
+        tags: [ 'doctrine.fixture.orm' ]
+
+    App\DataFixtures\CarteBancaireFixtures:
+        tags: [ 'doctrine.fixture.orm' ]

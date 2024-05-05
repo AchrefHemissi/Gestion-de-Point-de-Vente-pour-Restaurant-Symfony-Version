@@ -19,7 +19,7 @@
             <p><b>Your Orders :</b> <span>Product 1(2) - Product 2(1) -</span></p>
             <p><b>total price : </b><span>$60</span></p>
             <p><b>payment method :</b> <span> Master Card</span></p>
-            <button class="pdfbutton">Save as PDF</button>
+            <button class="pdfbutton no-print ">Save as PDF</button>
         </div>
     </div>
 </section>
@@ -27,8 +27,64 @@
 
 {% include 'fragments/loader.html.twig' %}
 
+<script>
+    var buttons = document.querySelectorAll('.pdfbutton');
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var parentDiv = this.parentElement.parentElement;
+            var html = parentDiv.innerHTML; // Get the HTML of the parent div
+            html=`<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+      * {
+        font-family: "Roboto", sans-serif;
+        font-size: 30px;
+      }
+      .box {
+        background: #ffc6b8;
+        width: 80%;
+        height: auto;
+        margin: 0 auto;
+        border: 4px solid #222;
+        padding: 1rem 2rem;
+        border-radius: 20px;
+        overflow: auto;
+      }
+      p {
+        color: #777;
+        line-height: 2;
+      }
+      span {
+        color: #222;
+      }
+      .no-print {
+        display: none;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>`+html+`</body>
+</html>`; // Add some styles to the HTML
+            var formData = new FormData();
+            formData.append('html', html);
 
+            fetch('/pdf', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.blob())
+                .then(blob => {
+                    var url = window.URL.createObjectURL(blob);
+                    window.open(url, '_blank');
+                });
+        });
+    });
+</script>
 </body>
+
 </html>
 
 
