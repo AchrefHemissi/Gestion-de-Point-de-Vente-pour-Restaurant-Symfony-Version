@@ -32,6 +32,13 @@ class FastFoodContollerController extends AbstractController
             return $this->add($request, $form2);
         }
 
+        $form6 = $this->createForm(ProductType::class); //fried chicken
+        $form6->handleRequest($request);
+        if ($form6->isSubmitted() && $form6->isValid()) {
+            return $this->add($request, $form6);
+        }
+
+
         $form7 = $this->createForm(ProductType::class); //fried chicken
         $form7->handleRequest($request);
         if ($form7->isSubmitted() && $form7->isValid()) {
@@ -42,6 +49,7 @@ class FastFoodContollerController extends AbstractController
             'controller_name' => 'FastFoodContollerController',
             'form' => $form->createView(),
             'form2' => $form2->createView(),
+            'form6' => $form6->createView(),
             'form7' => $form7->createView()
         ]);
 
