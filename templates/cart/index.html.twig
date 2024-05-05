@@ -13,6 +13,14 @@
     <div class="box-container">
         {% set totalprice = 0 %}
         {% set cart = app.session.get('cart') %}
+        {% if cart == [] %}
+            <div class="empty-cart">
+                <h1 style="color: red; font-size: 30px;">Your cart is empty</h1>
+
+
+
+            </div>
+        {% endif %}
         {% for product in cart %}
             <div class="box">
                 <button class="fas fa-times delete-btn" type="button" data-product-id="{{ product['id'] }}"></button>
