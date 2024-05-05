@@ -17,6 +17,9 @@ public function login(Request $request,EntityManagerInterface $entityManager)
 {
 $session=$request->getSession();//start session
 
+    if($session->has("id")){
+        return $this->redirectToRoute("home");
+    }
 
 $loginForm = $this->createForm(LoginType::class);
 $registrationForm = $this->createForm(RegistrationType::class);
@@ -37,7 +40,6 @@ if ($loginForm->isSubmitted() && $loginForm->isValid() ) {
             if(!$user->get_is_Admin()){
                 $session->set('id', $user); // store user id in session
                 return $this->redirectToRoute('home');
-                
                 }
             else
                 return $this->redirectToRoute('dashboard');
