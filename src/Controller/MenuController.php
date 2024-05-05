@@ -16,6 +16,10 @@ class MenuController extends AbstractController
 #[Route('/menu', name: 'menu')]
     public function index( Request $request ): Response
     {
+        $session=$request->getSession();
+        $person=$session->get('id');
+        if(!$person)
+            return $this->redirectToRoute('login_page');
         $form = $this->createForm(ProductType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
