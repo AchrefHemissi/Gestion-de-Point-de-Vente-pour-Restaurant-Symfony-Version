@@ -6,8 +6,6 @@ use App\Entity\Utilisateur;
 use App\Form\AdminMailType;
 use App\Service\SendMailFromAdminService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,8 +23,9 @@ class DashboardController extends AbstractController
     {
         $repository = $doctrine->getRepository(Utilisateur::class);
         $users = $repository->findAll();
+        $form = $this->createForm(AdminMailType::class);
+        $form->handleRequest($request);
 
-        $form = $this->generateForm($request);
 
         if($request->isMethod('Post'))
         {
@@ -54,11 +53,4 @@ class DashboardController extends AbstractController
         return $this->render('admin/dashboard.html.twig', ['users' => $users, 'form' => $form->createView()]);
     }
 
-    public function generateForm(Request $request): FormInterface
-    {
-        $form = $this->createForm(AdminMailType::class);
-        $form->handleRequest($request);
-
-        return $form;
-    }
 }
