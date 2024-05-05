@@ -42,6 +42,9 @@ class Utilisateur
     #[ORM\OneToMany(targetEntity: Commande::class, mappedBy: 'id_client')]
     private Collection $commandes;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $PathImage = null;
+
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
@@ -151,6 +154,18 @@ class Utilisateur
             $this->commandes->add($commande);
             $commande->setIdClient($this);
         }
+
+        return $this;
+    }
+
+    public function getPathImage(): ?string
+    {
+        return $this->PathImage;
+    }
+
+    public function setPathImage(?string $PathImage): static
+    {
+        $this->PathImage = $PathImage;
 
         return $this;
     }
