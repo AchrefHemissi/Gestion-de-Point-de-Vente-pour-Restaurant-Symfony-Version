@@ -95,7 +95,7 @@ class ProduitFixtures extends Fixture
         $produit->setPrix(12);
         $produit->setVendu(0);
         $produit->set_is_Drink(0);
-        $produit->setImgPath("https://picsum.photos/200/300");
+        $produit->setImgPath("client/images/FriedChicken.jpg");
 
         $manager->persist($produit);
         $manager->flush();
@@ -106,7 +106,7 @@ class ProduitFixtures extends Fixture
         $produit->setPrix(5);
         $produit->setVendu(0);
         $produit->set_is_Drink(1);
-        $produit->setImgPath("https://picsum.photos/200/300");
+        $produit->setImgPath("client/images/mojito.avif");
         $manager->persist($produit);
         $manager->flush();
 
@@ -116,7 +116,7 @@ class ProduitFixtures extends Fixture
         $produit->setPrix(11);
         $produit->setVendu(1);
         $produit->set_is_Drink(0);
-        $produit->setImgPath("https://picsum.photos/200/300");
+        $produit->setImgPath("client/uploaded_img/dessert-2.png");
         $manager->persist($produit);
         $manager->flush();
 
