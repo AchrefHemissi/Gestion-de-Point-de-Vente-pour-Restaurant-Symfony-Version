@@ -19,6 +19,7 @@
         <p style="color: green;">{{ flash_message }}</p>
     {% endfor %}
     {{ form_start(form) }}
+    <p>Your order costs: {{total}}<span> $</span></p>
     {{ form_row(form.numero, {'attr': {'placeholder': 'Number'}}) }}
     {{ form_row(form.code, {'attr': {'placeholder': 'Code'}}) }}
     <button type="submit">Order</button>
