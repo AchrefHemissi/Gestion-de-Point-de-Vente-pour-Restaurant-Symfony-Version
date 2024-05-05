@@ -15,6 +15,8 @@ class PaymentController extends AbstractController
     #[Route('/payment', name: 'payment')]
     public function pay(Request $request, EntityManagerInterface $entityManager): Response
     {
+        //il ya un form qui contient les address dans checkout
+        //il faut le recuperer ici pour l'envoyer a la base de donnee     -sahbi was head
         $session = $request->getSession();
         $person = $session->get('id');
         $totalPrice = $request->query->get('totalprice');

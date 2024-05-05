@@ -2,14 +2,14 @@
 
 <div class="heading">
     <h3>checkout</h3>
-    <p><a href="home.php">home </a> <span> / checkout</span></p>
+    <p><a href="{{ path("home") }}">home </a> <span> / checkout</span></p>
 </div>
 
 <section class="checkout">
 
     <h1 class="title">order summary</h1>
 
-    {{ form_start(form, {'action': path('menu'), 'method': 'POST'}) }}
+    {{ form_start(form, {'action': path('payment'), 'method': 'POST'}) }}
         <div class="cart-items">
             <h3>cart items</h3>
             {% set cart =app.session.get('cart') %}
