@@ -20,7 +20,13 @@ class DashboardController extends AbstractController
      */
     #[Route('/dashboard', name: 'dashboard')]
     public function dashboard(ManagerRegistry $doctrine,Request $request,SendMailFromAdminService $mailer): Response
-    {
+    {   $session = $request->getSession();
+        $id=$session->get('id');
+        if (!$id)
+            return $this->redirectToRoute('login_page');
+        if (!$id->get_is_Admin())
+            return $this->redirectToRoute('home');
+
         $repository = $doctrine->getRepository(Utilisateur::class);
         $users = $repository->findAll();
         $form = $this->createForm(AdminMailType::class);
