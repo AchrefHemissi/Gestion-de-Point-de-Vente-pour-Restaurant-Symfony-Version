@@ -13,7 +13,10 @@ class PaymentController extends AbstractController
 {
     #[Route(path: '/payment', name: 'payment')]
     public function pay(Request $request,EntityManagerInterface $entityManager)
-    {
+    {   $session=$request->getSession();
+        $person=$session->get('id');
+        if(!$person)
+            return $this->redirectToRoute('login_page');
         $paymentform = $this->createForm(PaymentType::class);
         $paymentform->handleRequest($request);
         if ($paymentform->isSubmitted() && $paymentform->isValid()) {
