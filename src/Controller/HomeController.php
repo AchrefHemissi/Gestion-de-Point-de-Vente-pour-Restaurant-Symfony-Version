@@ -15,6 +15,8 @@ class HomeController extends AbstractController
     {
         $session=$request->getSession();
         $person=$session->get('id');
+        if(!$person)
+            return $this->redirectToRoute('login_page');
         if(!$session->get('cart') !== null){
             $session->set('cart',[]);
         }
