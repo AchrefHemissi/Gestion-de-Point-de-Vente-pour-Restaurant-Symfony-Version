@@ -17,7 +17,7 @@ class HomeController extends AbstractController
         $person=$session->get('id');
         if(!$person)
             return $this->redirectToRoute('login_page');
-        if(!$session->get('cart') !== null){
+        if($session->get('cart') == null){
             $session->set('cart',[]);
         }
         return $this->render('home/index.html.twig', [
