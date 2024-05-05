@@ -70,114 +70,14 @@
     <h1 class="title">latest dishes</h1>
 
     <div class="box-container">
-        <form action="{{ path('cart') }}" method="post" class="box">
-            <button class="fas fa-shopping-cart" type="submit" name="add_to_cart"></button>
-            <img src="{{ asset('client/uploaded_img/pizza-1.png') }}" alt="" />
-            <a href="fast_food.php" class="cat">fast food</a>
-            <div class="name"> Pizza </div>
-            <div class="flex">
-                <div class="price"><span>$</span>3</div>
-                <input hidden name="id" value="1">
-                <input hidden name="name" value="Pizza">
-                <input hidden name="price" value="3" class="unit-price">
-                <input hidden name="imglink" value="{{ asset('uploaded_img/pizza-1.png') }}">
-                <input type="number" name="qty" class="qty" min="1" max="99" value="1" onkeypress="if(this.value.length == 2) return false;" />
-            </div>
-            <div class="sub-total">total : $ <span>3</span></div>
-        </form>
 
-        <form action="cart.php" accept="" method="post" class="box">
+        {% include 'fragments/pizzaProduct.html.twig' %}
+        {% include 'fragments/spaghettiProduct.html.twig' %}
+        {% include 'fragments/hamburgerProduct.html.twig' %}
+        {% include 'fragments/cheeseCakeProduct.html.twig' %}
+        {% include 'fragments/orangeJuiceProduct.html.twig' %}
+        {% include 'fragments/chawarmaProduct.html.twig' %}
 
-            <button class="fas fa-shopping-cart" type="submit" name="add_to_cart"></button>
-            <img src="{{asset('client/images/spaghetti.jpg')  }}" />
-            <a href="dishes.php" class="cat">dishes</a>
-            <div class="name">Spaghetti</div>
-            <div class="flex">
-                <div class="price"><span>$</span>4.5 </div>
-                <input hidden name="id" value="2">
-                <input hidden name="name" value="Spaghetti">
-                <input hidden name="price" value="4.5" class="unit-price">
-                <input hidden name="imglink" value="{{ asset('client/images/spaghetti.jpg') }}">
-
-                <input type="number" name="qty" class="qty" min="1" max="99" value="1" onkeypress="if(this.value.length == 2) return false;" />
-
-            </div>
-            <div class="sub-total">total : $ <span>4.5</span></div>
-
-        </form>
-
-        <form action="cart.php" accept="" method="post" class="box">
-
-            <button class="fas fa-shopping-cart" type="submit" name="add_to_cart"></button>
-            <img src="{{ asset('client/uploaded_img/burger-1.png')}}" alt="" />
-            <a href="fast_food.php" class="cat">fast food</a>
-            <div class="name"> Hamburger </div>
-            <div class="flex">
-                <div class="price"><span>$</span>11 </div>
-                <input hidden name="id" value="3">
-                <input hidden name="name" value="Hamburger">
-                <input hidden name="price" value="11" class="unit-price">
-                <input hidden name="imglink" value="{{ asset('client/uploaded_img/burger-1.png')}}">
-                <input type="number" name="qty" class="qty" min="1" max="99" value="1" onkeypress="if(this.value.length == 2) return false;" />
-
-            </div>
-            <div class="sub-total">total : $ <span>11</span></div>
-        </form>
-
-        <form action="cart.php" accept="" method="post" class="box">
-
-            <button class="fas fa-shopping-cart" type="submit" name="add_to_cart"></button>
-            <img src="{{ asset('client/images/cheesecake.jpg')}}" alt="" />
-            <a href="dessert.php" class="cat">dessert</a>
-            <div class="name">Cheese Cake </div>
-            <div class="flex">
-                <div class="price"><span>$</span>5 </div>
-                <input hidden name="id" value="4">
-                <input hidden name="name" value="Cheese Cake">
-                <input hidden name="price" value="5" class="unit-price">
-                <input hidden name="imglink" value="{{ asset('client/images/cheesecake.jpg')}}">
-                <input type="number" name="qty" class="qty" min="1" max="99" value="1" onkeypress="if(this.value.length == 2) return false;" />
-
-            </div>
-            <div class="sub-total">total : $ <span>5</span></div>
-
-        </form>
-
-        <form action="cart.php" accept="" method="post" class="box">
-
-            <button class="fas fa-shopping-cart" type="submit" name="add_to_cart"></button>
-            <img src="{{ asset('client/uploaded_img/drink-1.png')}}" alt="" />
-            <a href="drink.php" class="cat">drinks</a>
-            <div class="name">Orange Juice</div>
-            <div class="flex">
-                <div class="price"><span>$</span>7 </div>
-                <input hidden name="id" value="5">
-                <input hidden name="name" value="Orange Juice">
-                <input hidden name="price" value="7" class="unit-price">
-                <input hidden name="imglink" value="{{ asset('client/uploaded_img/drink-1.png')}}">
-                <input type="number" name="qty" class="qty" min="1" max="99" value="1" onkeypress="if(this.value.length == 2) return false;" />
-
-            </div>
-            <div class="sub-total">total : $ <span>7</span></div>
-        </form>
-
-        <form action="cart.php" accept="" method="post" class="box">
-
-            <button class="fas fa-shopping-cart" type="submit" name="add_to_cart"></button>
-            <img src="{{ asset('client/images/chawarma.avif')}}" alt="" />
-            <a href="dishes.php" class="cat">dishes</a>
-            <div class="name">Chawarma</div>
-            <div class="flex">
-                <div class="price"><span>$</span>14 </div>
-                <input hidden name="id" value="6">
-                <input hidden name="name" value="Chawarma">
-                <input hidden name="price" value="14" class="unit-price">
-                <input hidden name="imglink" value="{{ asset('client/images/chawarma.avif')}}">
-                <input type="number" name="qty" class="qty" min="1" max="99" value="1" onkeypress="if(this.value.length == 2) return false;" />
-
-            </div>
-            <div class="sub-total">total : $ <span>14</span></div>
-        </form>
         <div class="more-btn">
             <a href="{{ path('menu') }}" class="btn">view all</a>
         </div>
@@ -203,7 +103,28 @@
         },
     });
 </script>
-<script src="{{ asset('client/js/total_price.js') }}"></script>
+
+
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+           quantity = document.querySelectorAll("#product_quantity");
+          let price = 3;
+          //const position=this.parentNode.parentNode.firstElementChild.firstElementChild.innerText;
+          const subTotal = document.querySelector('#piz');
+          quantity.forEach(function(item) {
+                item.addEventListener('change', function() {
+                    //console.log(this.value); //quantity
+                    //console.log(this.parentNode.parentNode.firstElementChild.firstElementChild.innerText); // $
+                    //console.log(this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling); //total price
+                    //price = this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling;
+                    let unitPrice = this.parentNode.parentNode.nextElementSibling.firstElementChild.innerText; //unit price
+                    this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling.textContent = unitPrice * this.value;
+                });
+           });
+
+      });
+  </script>
+
 </body>
 
 </html>
