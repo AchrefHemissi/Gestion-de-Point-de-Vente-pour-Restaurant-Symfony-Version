@@ -20,25 +20,14 @@ class DishesController extends AbstractController
         if(!$person)
             return $this->redirectToRoute('login_page');
 
-        $form1 = $this->createForm(ProductType::class);  //spaghetti
-        $form1->handleRequest($request);
-        if ($form1->isSubmitted() && $form1->isValid()) {
-            return $this->add($request, $form1);
-        }
-
-
-        $form5 = $this->createForm(ProductType::class); //chawarma
-        $form5->handleRequest($request);
-        if ($form5->isSubmitted() && $form5->isValid()) {
-            return $this->add($request, $form5);
-        }
+        $form = $this->createForm(ProductType::class);  //spaghetti
 
 
 
         return $this->render('dishes/index.html.twig', [
             'controller_name' => 'DishesController',
-            'form1' => $form1->createView(),
-            'form5' => $form5->createView()
+            'form1' => $form->createView(),
+            'form5' => $form->createView()
         ]);
 
 
@@ -46,16 +35,6 @@ class DishesController extends AbstractController
 
 
 
-    public function add(Request $request, $form):Response
-    {
-        $session=$request->getSession();
-        $cart=$session->get('cart');
-        $cart[]=[
-            'id'=>$form->get('id')->getData(),
-            'quantity'=>$form->get('quantity')->getData()
-        ];
-        $session->set('cart',$cart);
-        return $this->redirectToRoute('cart');
-    }
+
 
 }

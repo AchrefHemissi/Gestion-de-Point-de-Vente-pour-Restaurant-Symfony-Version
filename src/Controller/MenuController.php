@@ -26,33 +26,31 @@ class MenuController extends AbstractController
             return $this->redirectToRoute('login_page');
 
 
-        $form=[];
-        for($i=0;$i<10;$i++) {
-            $form[] =$this->createForm(ProductType::class);
-        }
-        for($i=0;$i<10;$i++) {
-                $form[$i]->handleRequest($request);
-                if ($form[$i]->isSubmitted() && $form[$i]->isValid()) {
-                return $this->add($request, $form[$i], $manager);
+
+            $form =$this->createForm(ProductType::class);
+
+
+            $form->handleRequest($request);
+                if ($form->isSubmitted() && $form->isValid()) {
+                return $this->add($request, $form, $manager);
             }
 
-        }
 
 
 
 
         return $this->render('menu/index.html.twig', [
             'controller_name' => 'MenuController',
-            'form' => $form[0]->createView(),
-            'form1' => $form[1]->createView(),
-            'form2' => $form[2]->createView(),
-            'form3' => $form[3]->createView(),
-            'form4' => $form[4]->createView(),
-            'form5' => $form[5]->createView(),
-            'form6' => $form[6]->createView(),
-            'form7' => $form[7]->createView(),
-            'form8' => $form[8]->createView(),
-            'form9' => $form[9]->createView()
+            'form' => $form->createView(),
+            'form1' => $form->createView(),
+            'form2' => $form->createView(),
+            'form3' => $form->createView(),
+            'form4' => $form->createView(),
+            'form5' => $form->createView(),
+            'form6' => $form->createView(),
+            'form7' => $form->createView(),
+            'form8' => $form->createView(),
+            'form9' => $form->createView()
 
 
         ]);

@@ -21,25 +21,15 @@ class DrinksController extends AbstractController
             return $this->redirectToRoute('login_page');
 
 
-        $form8 = $this->createForm(ProductType::class);  //mojito
-        $form8->handleRequest($request);
-        if ($form8->isSubmitted() && $form8->isValid()) {
-            return $this->add($request, $form8);
-        }
+        $form = $this->createForm(ProductType::class);  //mojito
 
-
-        $form4 = $this->createForm(ProductType::class); //orange juice
-        $form4->handleRequest($request);
-        if ($form4->isSubmitted() && $form4->isValid()) {
-            return $this->add($request, $form4);
-        }
 
 
 
         return $this->render('drinks/index.html.twig', [
             'controller_name' => 'DrinksController',
-            'form8' => $form8->createView(),
-            'form4' => $form4->createView()
+            'form8' => $form->createView(),
+            'form4' => $form->createView()
         ]);
 
     }

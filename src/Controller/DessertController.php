@@ -21,41 +21,18 @@ class DessertController extends AbstractController
             return $this->redirectToRoute('login_page');
 
 
-        $form3 = $this->createForm(ProductType::class);  //cheese cake
-        $form3->handleRequest($request);
-        if ($form3->isSubmitted() && $form3->isValid()) {
-            return $this->add($request, $form3);
-        }
-
-
-        $form9 = $this->createForm(ProductType::class); //tiramisu
-        $form9->handleRequest($request);
-        if ($form9->isSubmitted() && $form9->isValid()) {
-            return $this->add($request, $form9);
-        }
-
-
+        $form= $this->createForm(ProductType::class);  //cheese cake
 
         return $this->render('dessert/index.html.twig', [
             'controller_name' => 'DessertController',
-            'form3' => $form3->createView(),
-            'form9' => $form9->createView()
+            'form3' => $form->createView(),
+            'form9' => $form->createView()
         ]);
 
     }
 
 
 
-    public function add(Request $request, $form):Response
-    {
-        $session=$request->getSession();
-        $cart=$session->get('cart');
-        $cart[]=[
-            'id'=>$form->get('id')->getData(),
-            'quantity'=>$form->get('quantity')->getData()
-        ];
-        $session->set('cart',$cart);
-        return $this->redirectToRoute('cart');
-    }
+
 
 }

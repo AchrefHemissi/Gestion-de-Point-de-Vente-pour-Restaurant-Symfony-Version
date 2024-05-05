@@ -23,9 +23,9 @@
         {% endif %}
         {% for product in cart %}
             <div class="box">
-                <button class="fas fa-times delete-btn" type="button" data-product-id="{{ product['id'] }}"></button>
+                <a class="fas fa-times delete-btn" type="button" href="{{ path('cart.delete',{id : product['id']}) }}"></a>
 
-                    <img src="{{ product['imgPath'] }}" alt="">
+                <img src="{{ asset(product['imgPath']) }}" alt="">
 
                 <div class="name">{{ product['name'] }}</div>
                 <div class="flex">

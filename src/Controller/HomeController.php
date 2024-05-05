@@ -23,40 +23,6 @@ class HomeController extends AbstractController
         }
 
         $form = $this->createForm(ProductType::class);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            return $this->add($request, $form);
-        }
-
-        $form1 = $this->createForm(ProductType::class);
-        $form1->handleRequest($request);
-        if ($form1->isSubmitted() && $form1->isValid()) {
-            return $this->add($request, $form1);
-        }
-
-        $form2 = $this->createForm(ProductType::class);
-        $form2->handleRequest($request);
-        if ($form2->isSubmitted() && $form2->isValid()) {
-            return $this->add($request, $form2);
-        }
-
-        $form3 = $this->createForm(ProductType::class);
-        $form3->handleRequest($request);
-        if ($form3->isSubmitted() && $form3->isValid()) {
-            return $this->add($request, $form3);
-        }
-
-        $form4 = $this->createForm(ProductType::class);
-        $form4->handleRequest($request);
-        if ($form4->isSubmitted() && $form4->isValid()) {
-            return $this->add($request, $form4);
-        }
-
-        $form5 = $this->createForm(ProductType::class);
-        $form5->handleRequest($request);
-        if ($form5->isSubmitted() && $form5->isValid()) {
-            return $this->add($request, $form5);
-        }
 
 
 
@@ -65,24 +31,14 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
             'person' => $person,
             'form' => $form->createView(),
-            'form1' => $form1->createView(),
-            'form2' => $form2->createView(),
-            'form3' => $form3->createView(),
-            'form4' => $form3->createView(),
-            'form5' => $form3->createView()
+            'form1' => $form->createView(),
+            'form2' => $form->createView(),
+            'form3' => $form->createView(),
+            'form4' => $form->createView(),
+            'form5' => $form->createView()
         ]);
     }
 
-    public function add(Request $request, $form):Response
-    {
-        $session=$request->getSession();
-        $cart=$session->get('cart');
-        $cart[]=[
-            'id'=>$form->get('id')->getData(),
-            'quantity'=>$form->get('quantity')->getData()
-        ];
-        $session->set('cart',$cart);
-        return $this->redirectToRoute('cart');
-    }
+
 
 }
