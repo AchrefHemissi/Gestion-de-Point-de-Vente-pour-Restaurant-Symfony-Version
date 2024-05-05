@@ -8,9 +8,9 @@
 
       <div class="user">
          {% if person.getPathImage is not empty %}
-            <img src="{{asset('upload/Utilisateur/'~ person.getPathImage())}}">
+            <img class="profile-pic" src="{{asset('upload/Utilisateur/'~ person.getPathImage())}}">
          {% else %}
-            <img src="{{asset('client/images/user-icon.png')}}" alt="">
+            <img class="profile-pic" src="{{asset('client/images/user-icon.png')}}" alt="">
          {% endif %}
 
          {{ form_start(form) }}
@@ -28,6 +28,12 @@
 
    </section>
    <script src="{{asset('client/js/script.js')}}"></script>
+<script>
+    var childElement = document.getElementById("parent_send");
+    var parentElement = childElement.parentNode;
+    parentElement.style.height = "100%";
+    parentElement.style.width = "100%";
+</script>
 </body>
 
 </html>

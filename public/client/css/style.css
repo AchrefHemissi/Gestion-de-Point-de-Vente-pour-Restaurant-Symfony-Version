@@ -651,10 +651,8 @@ section{
 }
 
 .user-details .user img{
-   width: 100%;
-   height: 15rem;
+
    object-fit: contain;
-   margin-bottom: 2rem;
 }
 
 .user-details .user p{
@@ -1080,4 +1078,69 @@ section{
 
 }
 
+.profile-pic {
+   border-radius: 50%;
+   height:150px;
+   width:150px;
+   margin-left: 30%;
+   margin-bottom: 20px;
+}
 
+#profile_nom,#profile_prenom,#profile_email,#profile_pass,#profile_num_tel{
+   margin: 20px 0px -5px 30px;
+   height: 40px;
+   width: 200px;
+   resize: none;
+   background: #ffffff;
+   border: 2px solid #8f8f8d;
+   border-radius: 10px;
+   padding: 15px;
+}
+label{
+    font-size: 20px;
+    margin-top: 27px;
+}
+
+#profile_num_tel{
+   margin-bottom: 20px;
+}
+
+#profile_image{
+   margin-top: 20px;
+}
+
+#profile_nom{
+   margin-left: 50px;
+}
+#profile_prenom{
+   margin-left: 18px;
+}
+#profile_email{
+   margin-left: 41px;
+}
+#profile_pass{
+   margin-left: 52px;
+}
+#profile_num_tel{
+   margin-left: 16px;
+}
+
+#profil_send{
+    background: #e24938;
+    border-radius: 40px;
+   height: 100%;
+
+
+}
+button:hover{
+   cursor: pointer;
+    background-color: #f5825c;
+}
+
+.btnform-container{
+   background: transparent;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 20px;
+}
