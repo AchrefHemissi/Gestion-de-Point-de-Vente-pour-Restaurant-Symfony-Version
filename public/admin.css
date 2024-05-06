@@ -379,6 +379,7 @@ nav .profile-details i {
 }
 
 .customer {
+    width: 70%;
     border: 1px solid #474646;
     background-color: #fff;
     padding: 10px;
@@ -388,6 +389,7 @@ nav .profile-details i {
     border-radius: 5px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .customer-info {
@@ -399,6 +401,7 @@ nav .profile-details i {
 }
 
 .ban-button {
+    width: 15%;
     background-color: #dc3545;
     color: #fff;
     border: none;
@@ -443,6 +446,11 @@ nav .profile-details i {
 .customers-list {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#customersList{
+   padding-left:15% ;
 }
 
 @keyframes transitionIn {
