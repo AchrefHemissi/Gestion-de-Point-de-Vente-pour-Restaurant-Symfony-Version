@@ -11,3 +11,5 @@
 /.idea
 /migrations
 /public/upload
+
+/migrations/*
