@@ -4,6 +4,17 @@
       <p><a href="{{ path('home') }}">home </a> <span> / profile</span></p>
    </div>
 
+{% for message in app.session.flashBag.get('success') %}
+    <div class="alert alert-success " id="alertprofilesuccess"  style="display: flex">
+        {{ message }}
+    </div>
+{% endfor %}
+    {% for message in app.session.flashBag.get('danger') %}
+        <div class="alert alert-danger" id="alertprofiledanger" style="display:flex">
+            {{ message }}
+        </div>
+    {% endfor %}
+
    <section class="user-details">
 
       <div class="user">
@@ -17,7 +28,8 @@
          {{ form_row(form.nom) }}
          {{ form_row(form.prenom) }}
          {{ form_row(form.email) }}
-         {{ form_row(form.pass) }}
+         {{ form_row(form.old_password) }}
+          {{  form_row(form.new_password) }}
          {{ form_row(form.num_tel) }}
          {{ form_row(form.image) }}
          <div class="btnform-container">
@@ -37,3 +49,23 @@
 </body>
 
 </html>
+
+<script>
+    // Select the flash message divs
+    const successAlert = document.getElementById('alertprofilesuccess');
+    const dangerAlert = document.getElementById('alertprofiledanger');
+
+    // Remove the success flash message after 3 seconds
+    if (successAlert) {
+        setTimeout(() => {
+            successAlert.style.opacity = '0';
+        }, 3000);
+    }
+
+    // Remove the danger flash message after 3 seconds
+    if (dangerAlert) {
+        setTimeout(() => {
+            dangerAlert.style.opacity = '0';
+        }, 3000);
+    }
+</script>

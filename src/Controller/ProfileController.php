@@ -67,6 +67,21 @@ class ProfileController extends AbstractController
 
                 }
 
+                $old_password=$form->get('old_password')->getData();
+                if($old_password)
+                {
+                    $password=$person->getPass();
+                    if($old_password === $password)
+                    {
+                        $new_password=$form->get('new_password')->getData();
+                        $person->setPass($new_password);
+                    }
+                    else
+                    {
+                        $this->addFlash('danger', 'Your old password is not correct.');
+                        return  $this ->redirectToRoute('profile');
+                    }
+                }
 
                 $manager->persist($person);
                 $manager->flush();

@@ -646,7 +646,7 @@ section{
 .user-details .user{
    border:var(--border);
    padding:2rem;
-   max-width: 40rem;
+   max-width: 45rem;
    margin:0 auto;
 }
 
@@ -1086,7 +1086,7 @@ section{
    margin-bottom: 20px;
 }
 
-#profile_nom,#profile_prenom,#profile_email,#profile_pass,#profile_num_tel{
+#profile_nom,#profile_prenom,#profile_email,#profile_old_password,#profile_new_password,#profile_num_tel{
    margin: 20px 0px -5px 30px;
    height: 40px;
    width: 200px;
@@ -1110,19 +1110,22 @@ label{
 }
 
 #profile_nom{
-   margin-left: 50px;
+   margin-left: 111px;
 }
 #profile_prenom{
-   margin-left: 18px;
+   margin-left: 80px;
 }
 #profile_email{
-   margin-left: 41px;
+   margin-left: 104px;
 }
-#profile_pass{
-   margin-left: 52px;
+#profile_old_password{
+   margin-left: 24px;
+}
+#profile_new_password{
+   margin-left: 12px;
 }
 #profile_num_tel{
-   margin-left: 16px;
+   margin-left: 77px;
 }
 
 #profil_send{

@@ -3,8 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Utilisateur;
+use App\Validator\Constraints\NoBlankOrSpace;
+use App\Validator\Constraints\NotBlankOrSpaceValidator;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,10 +18,21 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
+            ->add('nom',null,['constraints'=>[
+                new NoBlankOrSpace(),
+            ],
+                'data' => ' ',
+            ])
             ->add('prenom')
             ->add('email',null,['disabled' => true])
-            ->add('pass')
+            ->add('old_password', PasswordType::class, [
+            'mapped' => false,
+            'required' => false,
+        ])
+            ->add('new_password', PasswordType::class, [
+                'mapped' => false,
+                'required' => false,
+            ])
             ->add('num_tel')
             ->add('image', FileType::class, [
                 'label' => 'Your Profile Image (Image file only)',
