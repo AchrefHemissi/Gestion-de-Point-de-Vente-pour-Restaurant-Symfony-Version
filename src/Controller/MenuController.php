@@ -31,9 +31,11 @@ class MenuController extends AbstractController
 
 
             $form->handleRequest($request);
-                if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->isSubmitted() && $form->isValid()) {
                 return $this->add($request, $form, $manager);
             }
+
+
 
 
 
@@ -57,10 +59,14 @@ class MenuController extends AbstractController
     }
     public function add(Request $request,$form,EntityManagerInterface $manager):Response
     {
-        $session=$request->getSession();
-        $cart=$session->get('cart');
-        $formdata=$form->getData();
-        $product=$manager->getRepository(Produit::class)->findOneBy(['id'=>$formdata['id']]);
+        $session = $request->getSession();
+        $cart = $session->get('cart');
+        $formdata = $form->getData();
+        $product = $manager->getRepository(Produit::class)->findOneBy(['id' => $formdata['id']]);
+        if ($formdata['quantity'] <= 0 || $formdata['quantity'] > 99 || !is_int($formdata['quantity'])){
+            $this->addFlash('error', "Invalid quantity! please dont touch the html");
+            return $this->redirectToRoute('menu');
+        }
         //$form -> getData()['id'] // $form->get('id')->getData()
         $cart[$product->getId()]=[
             'id'=>$product->getId(),

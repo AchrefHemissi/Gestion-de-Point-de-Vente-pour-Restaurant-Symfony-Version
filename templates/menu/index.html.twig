@@ -11,6 +11,20 @@
 
 <section class="products">
     <h1 class="title">latest dishes</h1>
+    {# Check if there are any error messages in the flashbag #}
+
+        {# Loop through each error message and display it #}
+        {% for errorMessage in app.flashes('error') %}
+
+            <h1 style="color: red; font-size: 30px;text-align: center;"> {{ errorMessage }}</h1>
+        {% endfor %}
+
+
+
+
+
+
+
 
     <div class="box-container">
 
