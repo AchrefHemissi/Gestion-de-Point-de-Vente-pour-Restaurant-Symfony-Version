@@ -22,28 +22,23 @@ class CheckoutController extends AbstractController
         {
             $totalprice += $item['price']* $item['quantity'];
         }
-        $session->set('checkout_data', [
-            'address' => '',
-            'payment_method' => '',
-            'totalprice' => $totalprice,
-        ]);
+
         $form = $this->createForm(CheckoutType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $formData = $form->getData();
+            $address=$formData['address'];
             $session->set('checkout_data', [
-                'address' => $formData['address'],
-                'payment_method' => $formData['method'],
+                'address' => $address,
                 'totalprice' => $totalprice,
             ]);
-
             return $this->redirectToRoute('payment');
         }
 
         return $this->render('checkout/index.html.twig', [
             'controller_name' => 'CheckoutController',
             'form' => $form->createView(),
-            'totalprice' => $totalprice,
+
         ]);
     }
 }
