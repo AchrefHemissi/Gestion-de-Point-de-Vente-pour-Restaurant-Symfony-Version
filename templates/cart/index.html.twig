@@ -38,7 +38,7 @@
         {% endfor %}
     </div>
     <div class="cart-total">
-        <p>Grand total: {{totalprice}}<span> $</span></p>
+        <p>Grand total: <span>{{totalprice}} $</span></p>
         <a href="{{ path('checkout', { 'totalprice': totalprice }) }}" class="btn">Checkout Orders</a>
     </div>
 </section>

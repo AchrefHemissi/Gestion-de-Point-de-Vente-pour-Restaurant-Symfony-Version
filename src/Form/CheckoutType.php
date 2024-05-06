@@ -42,7 +42,8 @@ class CheckoutType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => '    Place Order',
                 'attr' => [
-                    'class' => 'fas fa-shopping-cart',
+                    'class' => 'btn order-btn',
+                    //'style' => 'background-color: transparent; border: none; color: white; font-size: 25px; cursor: pointer;'
 
 
                 ],
