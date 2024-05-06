@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\CarteBancaire;
+use App\Entity\Commande;
+use App\Entity\Utilisateur;
 use App\Form\PaymentType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,9 +19,13 @@ class PaymentController extends AbstractController
     {
         //il ya un form qui contient les address dans checkout
         //il faut le recuperer ici pour l'envoyer a la base de donnee     -sahbi was head
+        $repository = $entityManager->getRepository(Utilisateur::class);
         $session = $request->getSession();
-        $person = $session->get('id');
+        $person=$repository->findOneBy(['id'=>$session->get('id')]);
         $checkoutData = $session->get('checkout_data');
+        $today = new \DateTime();
+        $formattedDate = $today->format('Y-m-d');
+
         if (!$checkoutData) {
             return $this->redirectToRoute('checkout');
         }
@@ -30,32 +36,36 @@ class PaymentController extends AbstractController
         $paymentform = $this->createForm(PaymentType::class);
         $paymentform->handleRequest($request);
         $address = $checkoutData['address'];
-        $paymentMethod = $checkoutData['payment_method'];
         $totalPrice = $checkoutData['totalprice'];
         if ($paymentform->isSubmitted() && $paymentform->isValid()) {
             $number = $paymentform->get('numero')->getData();
             $code = $paymentform->get('code')->getData();
             $card = $entityManager->getRepository(CarteBancaire::class)->findOneBy(['numero' => $number]);
             if (!$card) {
-                $this->addFlash('danger', 'Invalid credentials.');
+                $this->addFlash('paymentdanger', 'Invalid credentials.');
             } else {
                 $expectedCode = $card->getCode();
 
                 if ($expectedCode != $code) {
-                    $this->addFlash('danger', 'Invalid credentials.');
+                    $this->addFlash('paymentdanger', 'Invalid credentials.');
                 } else {
                     $availableBalance = $card->getMontant();
-                    var_dump($availableBalance);
                     if ($availableBalance < $totalPrice) {
-                        $this->addFlash('danger', 'Insufficient funds.');
+                        $this->addFlash('paymentdanger', 'Insufficient funds.');
                     } else {
                         // Process the payment (simulate success here)
-                        $this->addFlash('success', 'Payment successful');
+                        $this->addFlash('paymentsuccess', 'Payment successful');
                         $newBalance = $availableBalance - $totalPrice;
                         $card->setMontant($newBalance);
                         $entityManager->persist($card);
                         $entityManager->flush();
-                        return $this->redirectToRoute('home');
+                        $session->set('payment_data',[
+                            'address'=>$address,
+                            'date'=>$formattedDate,
+                            'id_client'=>$person->getId()
+                        ]);
+
+                        return $this->redirectToRoute('orders');
                     }
                 }
             }
