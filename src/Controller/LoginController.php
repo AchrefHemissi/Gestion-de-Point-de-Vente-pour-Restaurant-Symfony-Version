@@ -38,11 +38,16 @@ if ($loginForm->isSubmitted() && $loginForm->isValid() ) {
         $storedPassword = $user->getPass();
         if ($password=== $storedPassword) {
             if(!$user->get_is_Admin()){
+                if($user->get_is_Banned()){
+                   return $this->render('banned/banned.html.twig');
+                }
+
                 $session->set('id', $user); // store user id in session
                 return $this->redirectToRoute('home');
                 }
             else
             {   $session->set('id', $user); // store user id in session
+                $session->set('admin', true);
                 return $this->redirectToRoute('dashboard');
             }
         } else {
