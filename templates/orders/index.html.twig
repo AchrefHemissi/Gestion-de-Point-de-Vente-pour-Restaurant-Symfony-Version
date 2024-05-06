@@ -10,7 +10,10 @@
 <section class="orders">
     <h1 class="title">placed orders</h1>
     {% for flash_message in app.session.flashbag.get('paymentsuccess') %}
-        <p style="color: green;">{{ flash_message }}</p>
+    <div class="alert alert-success " id="alertemailsuccess"  style="display: flex">
+        {{ flash_message }}
+    </div>
+
     {% endfor %}
     <div class="box-container">
         <div class="orderbox box">
@@ -84,6 +87,25 @@
                 });
         });
     });
+</script>
+<script>
+    // Select the flash message divs
+    const successAlert = document.getElementById('alertemailsuccess');
+    const dangerAlert = document.getElementById('alertemaildanger');
+
+    // Remove the success flash message after 3 seconds
+    if (successAlert) {
+        setTimeout(() => {
+            successAlert.style.opacity = '0';
+        }, 3000);
+    }
+
+    // Remove the danger flash message after 3 seconds
+    if (dangerAlert) {
+        setTimeout(() => {
+            dangerAlert.style.opacity = '0';
+        }, 3000);
+    }
 </script>
 </body>
 
