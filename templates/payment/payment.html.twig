@@ -12,12 +12,10 @@
 <div class="container">
     <h2>Checkout</h2>
 
-    {% for flash_message in app.session.flashbag.get('danger') %}
+    {% for flash_message in app.session.flashbag.get('paymentdanger') %}
         <p style="color: red;">{{ flash_message }}</p>
     {% endfor %}
-    {% for flash_message in app.session.flashbag.get('success') %}
-        <p style="color: green;">{{ flash_message }}</p>
-    {% endfor %}
+
     {{ form_start(form) }}
     <p>Your order costs: {{total}}<span> $</span></p>
     {{ form_row(form.numero, {'attr': {'placeholder': 'Number'}}) }}
