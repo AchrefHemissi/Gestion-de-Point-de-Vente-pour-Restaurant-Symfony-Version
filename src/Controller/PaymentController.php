@@ -19,20 +19,23 @@ class PaymentController extends AbstractController
         //il faut le recuperer ici pour l'envoyer a la base de donnee     -sahbi was head
         $session = $request->getSession();
         $person = $session->get('id');
-        $totalPrice = $request->query->get('totalprice');
-
+        $checkoutData = $session->get('checkout_data');
+        if (!$checkoutData) {
+            return $this->redirectToRoute('checkout');
+        }
         if (!$person) {
             return $this->redirectToRoute('login_page');
         }
 
         $paymentform = $this->createForm(PaymentType::class);
         $paymentform->handleRequest($request);
-
+        $address = $checkoutData['address'];
+        $paymentMethod = $checkoutData['payment_method'];
+        $totalPrice = $checkoutData['totalprice'];
         if ($paymentform->isSubmitted() && $paymentform->isValid()) {
             $number = $paymentform->get('numero')->getData();
             $code = $paymentform->get('code')->getData();
             $card = $entityManager->getRepository(CarteBancaire::class)->findOneBy(['numero' => $number]);
-
             if (!$card) {
                 $this->addFlash('danger', 'Invalid credentials.');
             } else {
@@ -42,6 +45,7 @@ class PaymentController extends AbstractController
                     $this->addFlash('danger', 'Invalid credentials.');
                 } else {
                     $availableBalance = $card->getMontant();
+                    var_dump($availableBalance);
                     if ($availableBalance < $totalPrice) {
                         $this->addFlash('danger', 'Insufficient funds.');
                     } else {
@@ -59,6 +63,7 @@ class PaymentController extends AbstractController
         return $this->render('payment/payment.html.twig', [
             'total' => $totalPrice,
             'form' => $paymentform->createView(),
+
         ]);
     }
 }
