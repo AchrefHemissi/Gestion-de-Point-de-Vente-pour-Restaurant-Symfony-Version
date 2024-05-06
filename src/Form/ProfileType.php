@@ -18,11 +18,7 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom',null,['constraints'=>[
-                new NoBlankOrSpace(),
-            ],
-                'data' => ' ',
-            ])
+            ->add('nom')
             ->add('prenom')
             ->add('email',null,['disabled' => true])
             ->add('old_password', PasswordType::class, [
