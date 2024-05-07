@@ -9,7 +9,7 @@
 
     <h1 class="title">order summary</h1>
 
-    {{ form_start(form, {'action': path('payment'), 'method': 'POST'}) }}
+    {{ form_start(form, {'action': path('checkout'), 'method': 'POST'}) }}
         <div class="cart-items">
             <h3>cart items</h3>
             {% set cart =app.session.get('cart') %}

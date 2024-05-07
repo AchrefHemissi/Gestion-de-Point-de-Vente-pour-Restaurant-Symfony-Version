@@ -7,6 +7,7 @@ use App\Entity\Produit;
 use App\Form\ProductType;
 
 use Doctrine\ORM\EntityManagerInterface;
+use phpDocumentor\Reflection\PseudoTypes\FloatValue;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Request;
@@ -63,7 +64,8 @@ class MenuController extends AbstractController
         $cart = $session->get('cart');
         $formdata = $form->getData();
         $product = $manager->getRepository(Produit::class)->findOneBy(['id' => $formdata['id']]);
-        if ($formdata['quantity'] <= 0 || $formdata['quantity'] > 99 || !is_int($formdata['quantity'])){
+
+        if (!is_int($formdata['quantity'])  || $formdata['quantity'] <= 0 || $formdata['quantity'] > 99 ||  $formdata['id'] < 1 || $formdata['id'] > 10 || !ctype_digit($formdata['id']) ){
             $this->addFlash('error', "Invalid quantity! please dont touch the html");
             return $this->redirectToRoute('menu');
         }
