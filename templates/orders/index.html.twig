@@ -15,18 +15,26 @@
     </div>
 
     {% endfor %}
+    {% for order in orders |reverse %}
     <div class="box-container">
         <div class="orderbox box">
-            <p><b>Placed on :</b> <span>2024-05-03</span></p>
-            <p><b>Full Name : </b><span>John Doe</span></p>
-            <p><b>Email :</b> <span>john.doe@example.com</span></p>
-            <p><b>Address :</b> <span>123 Street, City, Country</span></p>
-            <p><b>Your Orders :</b> <span>Product 1(2) - Product 2(1) -</span></p>
-            <p><b>total price : </b><span>$60</span></p>
+            <p><b>Placed on :</b> <span>{{ order['order_date'] }}</span></p>
+            <p><b>Full Name : </b><span>{{ order['customer_name'] }}</span></p>
+            <p><b>Email :</b> <span>{{ order['customer_email'] }}</span></p>
+            <p><b>Address :</b> <span>{{ order['order_address'] }}</span></p>
+            <p><b>Your Orders :</b>
+                <span>
+                    {% for product in order['products'] %}
+                    {{ product['name'] }} ({{ product['quantity'] }})-- <br>
+                    {% endfor %}
+
+                </span></p>
+            <p><b>total price : </b><span>{{ order['total_price'] }}</span></p>
             <p><b>payment method :</b> <span> Master Card</span></p>
             <button class="pdfbutton no-print ">Save as PDF</button>
         </div>
     </div>
+    {% endfor %}
 </section>
 
 

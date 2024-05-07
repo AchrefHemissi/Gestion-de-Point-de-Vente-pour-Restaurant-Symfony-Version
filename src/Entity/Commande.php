@@ -106,6 +106,7 @@ class Commande
         if (!$this->ordProduits->contains($ordProduit)) {
             $this->ordProduits->add($ordProduit);
             $ordProduit->setIdCommande($this);
+
         }
 
         return $this;

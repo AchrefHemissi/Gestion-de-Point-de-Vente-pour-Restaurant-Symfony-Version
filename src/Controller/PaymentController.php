@@ -20,8 +20,7 @@ class PaymentController extends AbstractController
     #[Route('/payment', name: 'payment')]
     public function pay(Request $request, EntityManagerInterface $entityManager): Response
     {
-        //il ya un form qui contient les address dans checkout
-        //il faut le recuperer ici pour l'envoyer a la base de donnee     -sahbi was head
+
         $repository = $entityManager->getRepository(Utilisateur::class);
         $session = $request->getSession();
         $person=$repository->findOneBy(['id'=>$session->get('id')]);
@@ -71,15 +70,7 @@ class PaymentController extends AbstractController
                             $session->set('cart',[]);
                             $session->set('checkout_data',[]);
 
-
-                            /*  $session->set('payment_data',[
-                                 'address'=>$address,
-                                 'date'=>$formattedDate,
-                                 'id_client'=>$person->getId()
-                             ]);
-                            */
-
-                            return $this->redirectToRoute('menu');
+                            return $this->redirectToRoute('orders');
                         }
                     }
                 }
@@ -112,7 +103,7 @@ class PaymentController extends AbstractController
             $orderaddress = $request->getSession()->get('checkout_data')['address'];
             $today = new \DateTime();
             $formattedDate = $today->format('Y-m-d');
-            //table commande insert data
+
             $order = new Commande();
             $order->setLieu($orderaddress);
             $order->setDateCommande($today);
@@ -120,25 +111,31 @@ class PaymentController extends AbstractController
             $order->setEtatCommande(0);
             $entityManager->persist($order);
             $entityManager->flush();
-            $order1=$commandeRepository->findOneBy(['id' =>$order->getId()]);
+
             foreach($cart as $id => $item){
                 $ordproduct=new OrdProduit();
                 $product=$productrepo->findOneBy(['id'=>$id]);
-                $ordproduct->setIdCommande($order1);
+                $ordproduct->setIdCommande($order);
                 $ordproduct->setIdProduit($product);
                 $ordproduct->setQuantity($item['quantity']);
+
+
+                $order->addOrdProduit($ordproduct);
+
                 $entityManager->persist($ordproduct);
-                $entityManager->flush();
 
 
             }
+
+            $entityManager->persist($order);
+            $entityManager->flush();
 
 
 
             // Return true if the operation is successful
             return true;
         } catch (\Exception $e) {
-            dd($e);
+
 
             return false;
         }

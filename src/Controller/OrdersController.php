@@ -25,31 +25,46 @@ class OrdersController extends AbstractController
         $person=$repository->findOneBy(['id'=>$session->get('id')]);
         if(!$person)
             return $this->redirectToRoute('login_page');
-        /*$order=new Commande();
-        $paymentdata=$session->get('payment_data');
-        $orderdate=new \DateTime($paymentdata['date']);
-        $orderaddress=$paymentdata['address'];
-        $order->setLieu($orderaddress);
-        $order->setDateCommande($orderdate);
-        $order->setIdClient($person);
-        $order->setEtatCommande(0);
-        $entityManager->persist($order);
-        $entityManager->flush(); */
+
         $commande=  $repositoryCommande->findBy(['id_client' => $person]);
         $ordProduct =$repositoryOrdProduct->findAll();
-       // dd($ordProduct);
-        foreach($commande as  $item){
+        $user= $repository->findOneBy(['id' => $person->getId()]);
+        $name= $user->getNom();
+        $email= $user->getEmail();
+        $orders = [];
 
-            $ordProduct=$repositoryOrdProduct->findOneBy(['id_commande' => $item]);
+        foreach ($commande as $item) {
+            $order = [];
+            $order['order_date'] = $item->getDateCommande()->format('Y-m-d ');
+            $order['order_address'] = $item->getLieu();
+            $order['customer_name'] = $name;
+            $order['customer_email'] = $email;
+            $order['products'] = [];
 
-            dd( $ordProduct);
+            $totalPrice = 0;
 
+            foreach ($item->getOrdProduits() as $ordProduit) {
+                $product = $repositoryProduct->findOneBy(['id' => $ordProduit->getIdProduit()]);
+                $productName = $product->getName();
+                $productPrice = $product->getPrix();
+                $quantity = $ordProduit->getQuantity();
+                $totalPrice += $productPrice * $quantity;
+
+                $order['products'][] = [
+                    'name' => $productName,
+                    'quantity' => $quantity,
+                    'unit_price' => $productPrice
+                ];
+            }
+
+            $order['total_price'] = $totalPrice;
+
+            $orders[] = $order;
         }
-
-
 
         return $this->render('orders/index.html.twig', [
             'controller_name' => 'OrdersController',
+            'orders' => $orders
         ]);
     }
 }
