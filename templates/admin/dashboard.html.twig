@@ -211,8 +211,11 @@
         // Loop over the orders and display them
         for (let orderId in orders) {
             let firstOrderItem = orders[orderId][0];
+            console.log(firstOrderItem);
             let customerName = firstOrderItem.fname + ' ' + firstOrderItem.lname;
-            let cdate = firstOrderItem.cdate;
+            let cdate = firstOrderItem.cdate.date.substring(0,11);
+            console.log(cdate);
+
             let num = firstOrderItem.unum_tel;
             let lieu = firstOrderItem.clieu;
 
