@@ -16,9 +16,11 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
             ->add('id', HiddenType::class, [
                 'data' => 1, // default value
             ])
+
             ->add('quantity', IntegerType::class, // Change the input type to IntegerType
                 [
                     'label' => false,
@@ -34,7 +36,6 @@ class ProductType extends AbstractType
                 'label' => false,
                 'attr' => [
                     'class' => 'fas fa-shopping-cart',
-
                 ],
             ])
 
