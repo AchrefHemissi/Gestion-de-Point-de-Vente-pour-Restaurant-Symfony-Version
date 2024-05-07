@@ -115,15 +115,16 @@ class PaymentController extends AbstractController
             foreach($cart as $id => $item){
                 $ordproduct=new OrdProduit();
                 $product=$productrepo->findOneBy(['id'=>$id]);
+
                 $ordproduct->setIdCommande($order);
                 $ordproduct->setIdProduit($product);
                 $ordproduct->setQuantity($item['quantity']);
-
+                $product ->setVendu($product->getVendu()+$item['quantity']);
 
                 $order->addOrdProduit($ordproduct);
 
                 $entityManager->persist($ordproduct);
-
+                $entityManager->persist($product);
 
             }
 
