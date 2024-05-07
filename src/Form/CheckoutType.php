@@ -28,7 +28,6 @@ class CheckoutType extends AbstractType
                 'label' => 'Payment Method',
                 'choices' => [
                     'Select Payment Method' => '',
-                    'Cash on Delivery' => 'cash_on_delivery',
                     'Credit Card' => 'credit_card',
                     // Add more payment methods if needed
                 ],

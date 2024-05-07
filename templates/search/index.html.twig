@@ -10,13 +10,14 @@
     </div>
 
     <section class="products">
-        {{ form_start(forme) }}
-        {{ form_row(forme.search) }}
+        {{ form_start(forme,{'attr':{'id':'searchForm'}}) }}
+        {{ form_widget(forme.search, {'attr': {'style': 'height: 40px; background: #ffffff; border: 2px solid #8f8f8d; border-radius: 10px; padding: 15px; width: 50%; margin: auto;'}}) }}
         <div class="btnform-container">
-            {{ form_row(forme.submit) }}
+            {{ form_row(forme.submit,{'attr' : {'class': 'btn'}}) }}
         </div>
         {{ form_end(forme) }}
-
+        <br>
+        <br>
 
         <div class="box-container">
 
@@ -28,7 +29,7 @@
 
             {% else %}
 
-                <h1>No products found</h1>
+                <h1 class="notfound">No products found</h1>
 
             {% endif %}
 
@@ -43,6 +44,27 @@
     </body>
 
     <script src={{ asset('client/js/script.js') }}></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            quantity = document.querySelectorAll("#product_quantity");
+            let price = 3;
+            //const position=this.parentNode.parentNode.firstElementChild.firstElementChild.innerText;
+            const subTotal = document.querySelector('#piz');
+            quantity.forEach(function(item) {
+                item.addEventListener('change', function() {
+                    //console.log(this.value); //quantity
+                    //console.log(this.parentNode.parentNode.firstElementChild.firstElementChild.innerText); // $
+                    //console.log(this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling); //total price
+                    //price = this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling;
+                    let unitPrice = this.parentNode.parentNode.nextElementSibling.firstElementChild.innerText; //unit price
+                    this.parentNode.parentNode.firstElementChild.firstElementChild.nextSibling.textContent = unitPrice * this.value;
+                });
+            });
+
+        });
+    </script>
+
     </html>
 
 
