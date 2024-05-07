@@ -22,23 +22,16 @@ class MenuController extends AbstractController
         $session=$request->getSession();
         $person=$session->get('id');
 
-        if(!$person)
+        if(!$person) {
             return $this->redirectToRoute('login_page');
+        }
 
+        $form =$this->createForm(ProductType::class);
+        $form->handleRequest($request);
 
-
-            $form =$this->createForm(ProductType::class);
-
-
-            $form->handleRequest($request);
-            if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
                 return $this->add($request, $form, $manager);
-            }
-
-
-
-
-
+        }
 
 
         return $this->render('menu/index.html.twig', [

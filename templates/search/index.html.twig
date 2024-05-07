@@ -1,20 +1,52 @@
-{% extends 'base.html.twig' %}
+{% include 'fragments/navBar.html.twig' %}
 
-{% block title %}Hello SearchController!{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="heading">
+        <h3>Result</h3>
+        <p><a href={{ path('home') }}>home </a> <span> / menu</span></p>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/medini/OneDrive/Desktop/Achref/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version/src/Controller/SearchController.php</code></li>
-        <li>Your template at <code>C:/Users/medini/OneDrive/Desktop/Achref/Gestion-de-Point-de-Vente-pour-Restaurant-Symfony-Version/templates/search/index.html.twig</code></li>
-    </ul>
-</div>
+    <section class="products">
+        {{ form_start(forme) }}
+        {{ form_row(forme.search) }}
+        <div class="btnform-container">
+            {{ form_row(forme.submit) }}
+        </div>
+        {{ form_end(forme) }}
+
+
+        <div class="box-container">
+
+            {% if products|length != 0 %}
+                {% for product in products %}
+                    {% include 'fragments/' ~ product.productname ~ 'Product.html.twig'%}
+
+                {% endfor %}
+
+            {% else %}
+
+                <h1>No products found</h1>
+
+            {% endif %}
+
+
+        </div>
+    </section>
+
+    <div class="loader">
+        <img src={{ asset('client/images/loader.gif') }} alt="" />
+    </div>
+
+    </body>
+
+    <script src={{ asset('client/js/script.js') }}></script>
+    </html>
+
+
 {% endblock %}
+
+
+
