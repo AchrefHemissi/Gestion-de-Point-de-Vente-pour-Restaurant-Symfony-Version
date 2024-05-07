@@ -23,9 +23,10 @@
             <p><b>Email :</b> <span>{{ order['customer_email'] }}</span></p>
             <p><b>Address :</b> <span>{{ order['order_address'] }}</span></p>
             <p><b>Your Orders :</b>
+            <br>
                 <span>
                     {% for product in order['products'] %}
-                    {{ product['name'] }} ({{ product['quantity'] }})-- <br>
+                    {{ product['name'] }} [{{ product['quantity'] }}]   <br>
                     {% endfor %}
 
                 </span></p>

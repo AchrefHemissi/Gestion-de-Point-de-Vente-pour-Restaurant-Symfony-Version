@@ -17,8 +17,8 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom',null,['attr'=>['pattern'=>"[a-zA-Z0-9]+" ,'title'=>"Only letters and numbers allowed"]])
-            ->add('prenom',null,['attr'=>['pattern'=>"[a-zA-Z0-9]+" ,'title'=>"Only letters and numbers allowed"]])
+            ->add('nom',null,['attr'=>['pattern'=>"^\s*\pL+(\s+\pL+)*\s*$" ,'title'=>"Only letters and numbers allowed"]])
+            ->add('prenom',null,['attr'=>['pattern'=>"^\s*\pL+(\s+\pL+)*\s*$" ,'title'=>"Only letters and numbers allowed"]])
             ->add('email',null,['disabled' => true])
             ->add('old_password', PasswordType::class, [
             'mapped' => false,
