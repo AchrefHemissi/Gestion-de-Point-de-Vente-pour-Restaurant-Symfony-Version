@@ -21,7 +21,7 @@ class LogoutController extends AbstractController
         } // reset cart
         if($session->has('checkout_data')){
             $session->remove('checkout_data');
-        } // reset cart count
+        } // reset checkout_data
 
 
         return $this->redirectToRoute('login_page');
