@@ -1,6 +1,9 @@
 
 
-{% include 'fragments/navBar.html.twig' %}
+{% extends 'fragments/navBar.html.twig' %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
 
 <section class="home">
     <div class="swiper home-slider">
@@ -18,7 +21,7 @@
             <div class="swiper-slide slide">
                 <div class="content">
                     <h3>Hamburger</h3>
-                    <a href="menu.php" class="btn">see menus</a>
+                    <a href="{{ path('menu') }}" class="btn">see menus</a>
                 </div>
                 <div class="image">
                     <img src="{{ asset('client/images/home-img-2.png')}}" alt="" />
@@ -28,7 +31,7 @@
             <div class="swiper-slide slide">
                 <div class="content">
                     <h3>Fried chicken</h3>
-                    <a href="menu.php" class="btn">see menus</a>
+                    <a href="{{ path('menu') }}" class="btn">see menus</a>
                 </div>
                 <div class="image">
                     <img src="{{ asset('client/images/fried.png')}}" alt="" />
@@ -128,3 +131,4 @@
 </body>
 
 </html>
+{% endblock %}

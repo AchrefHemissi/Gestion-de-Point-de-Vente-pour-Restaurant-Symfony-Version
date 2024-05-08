@@ -1,4 +1,9 @@
-{% include 'fragments/navBar.html.twig' %}
+{% extends 'fragments/navBar.html.twig' %}
+{% block title %}Cart{% endblock %}
+
+{% block body %}
+
+
 <div class="heading">
     <h3>shopping cart</h3>
     <p><a href="{{ path('home') }}">home </a> <span> / cart</span></p>
@@ -39,7 +44,9 @@
     </div>
     <div class="cart-total">
         <p>Grand total: <span>{{totalprice}} $</span></p>
-        <a href="{{ path('checkout', { 'totalprice': totalprice }) }}" class="btn">Checkout Orders</a>
+        <a href="{{ path('checkout') }}" class="btn">Checkout Orders</a>
     </div>
 </section>
+
+    {% endblock %}
 
