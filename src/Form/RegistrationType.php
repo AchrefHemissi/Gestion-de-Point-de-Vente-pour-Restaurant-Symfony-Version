@@ -30,9 +30,12 @@ $builder
     'attr' => ['placeholder' => 'Email'],
 ])
 ->add('num_tel', TelType::class, [
-'label' => 'Phone Number',
-    'attr' => ['placeholder' => 'Phone Number'],
-])
+    'label' => 'Phone Number',
+    'attr' => [
+        'placeholder' => 'Phone Number',
+        'pattern' => '\d{8}'
+        ],
+    ])
 ->add('pass', PasswordType::class, [
 'label' => 'Password',
     'attr' => ['placeholder' => 'Password'],

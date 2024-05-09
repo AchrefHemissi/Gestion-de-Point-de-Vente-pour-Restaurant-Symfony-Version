@@ -68,13 +68,13 @@ class ProfileController extends AbstractController
                 }
 
                 $old_password=$form->get('old_password')->getData();
+                $new_password=$form->get('new_password')->getData();
 
                 if(!empty($old_password) && !empty($new_password))
                 {
                     $password=$person->getPass();
                     if($old_password === $password)
                     {
-                        $new_password=$form->get('new_password')->getData();
                         $person->setPass($new_password);
                     }
                     else
