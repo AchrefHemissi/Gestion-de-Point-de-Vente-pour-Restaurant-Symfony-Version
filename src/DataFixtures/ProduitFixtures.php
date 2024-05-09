@@ -46,7 +46,7 @@ class ProduitFixtures extends Fixture
 
 
         $produit = new Produit();
-        $produit->setName("Chesscake");
+        $produit->setName("Cheese Cake");
         $produit->setPrix(7);
         $produit->setVendu(0);
         $produit->set_is_Drink(0);
@@ -91,7 +91,7 @@ class ProduitFixtures extends Fixture
 
 
         $produit = new Produit();
-        $produit->setName("FriedChiken");
+        $produit->setName("Fried Chicken");
         $produit->setPrix(12);
         $produit->setVendu(0);
         $produit->set_is_Drink(0);

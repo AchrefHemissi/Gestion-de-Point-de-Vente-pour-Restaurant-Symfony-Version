@@ -1,6 +1,6 @@
 {% extends 'fragments/navBar.html.twig' %}
 
-{% block title %}search{% endblock %}
+{% block title %}Search{% endblock %}
 
 {% block body %}
 
@@ -23,7 +23,13 @@
 
             {% if products|length != 0 %}
                 {% for product in products %}
-                    {% include 'fragments/' ~ product.productname ~ 'Product.html.twig'%}
+                    {# fragment name fix  #}
+                    {# Transformer en minuscules #}
+                    {% set chaine_minuscules = product.productname|lower %}
+                    {# Supprimer les espace #}
+                    {% set chaine_sans_espace = chaine_minuscules|replace({' ': ''}) %}
+
+                    {% include 'fragments/' ~ chaine_sans_espace ~ 'Product.html.twig'%}
 
                 {% endfor %}
 
